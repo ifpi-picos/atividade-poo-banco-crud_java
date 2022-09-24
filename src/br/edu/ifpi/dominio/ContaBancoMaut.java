@@ -20,8 +20,8 @@ public class ContaBancoMaut {
         return numeroAgencia;
     }
 
-    public String getNumeroConta() {
-        return numeroConta;
+    public String getNumeroConta(String numeroConta) {
+        return this.numeroConta;
     }
 
     public double getSaldo() {
