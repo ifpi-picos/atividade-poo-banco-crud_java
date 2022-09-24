@@ -22,16 +22,24 @@ public class Cliente {
         return nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     public String getCpf() {
         return this.cpf;
     }
 
     public LocalDate getDataNascimento() {
-        return dataNascimento;
+        return this.dataNascimento;
+    }
+
+    public void setDataNascimento(LocalDate datanascimento) {
+        this.dataNascimento = datanascimento;
     }
 
     public String getEndereco() {
-        return endereco;
+        return this.endereco;
     }
 
     public void setEndereco(String endereco) {
