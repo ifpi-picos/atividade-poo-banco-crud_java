@@ -20,23 +20,23 @@ public class ContaBancoMaut {
         return numeroAgencia;
     }
 
-    public void setNumeroAgencia(String numeroAgencia) {
-        this.numeroAgencia = numeroAgencia;
-    }
-
     public String getNumeroConta() {
         return numeroConta;
-    }
-
-    public void setNumeroConta(String numeroConta) {
-        this.numeroConta = numeroConta;
     }
 
     public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(double saldo) {
+    public void setDepositar(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public void setSacar(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public void setTransfirir(double saldo) {
         this.saldo = saldo;
     }
 
