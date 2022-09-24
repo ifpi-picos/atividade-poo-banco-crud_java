@@ -17,7 +17,7 @@ public class ContaBancoMaut {
     }
 
     public String getNumeroAgencia() {
-        return numeroAgencia;
+        return this.numeroAgencia;
     }
 
     public String getNumeroConta(String numeroConta) {
@@ -25,7 +25,7 @@ public class ContaBancoMaut {
     }
 
     public double getSaldo() {
-        return saldo;
+        return this.saldo;
     }
 
     public void setDepositar(double saldo) {
@@ -41,11 +41,7 @@ public class ContaBancoMaut {
     }
 
     public Cliente getNomeCliente() {
-        return nomeCliente;
-    }
-
-    public void setNomeCliente(Cliente nomeCliente) {
-        this.nomeCliente = nomeCliente;
+        return this.nomeCliente;
     }
      
 }
