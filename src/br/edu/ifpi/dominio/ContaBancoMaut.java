@@ -5,9 +5,9 @@ public class ContaBancoMaut {
     private String numeroAgencia;
     private String numeroConta;
     private double saldo;
-    private Cliente cpfCliente;
+    private AberturaConta cpfCliente;
 
-    public ContaBancoMaut(String numeroAgencia, String numeroConta, double saldo, Cliente cpfCliente) {
+    public ContaBancoMaut(String numeroAgencia, String numeroConta, double saldo, AberturaConta cpfCliente) {
         
         this.numeroAgencia = numeroAgencia;
         this.numeroConta = numeroConta;
@@ -36,7 +36,12 @@ public class ContaBancoMaut {
         this.saldo = this.saldo - saldo;
     }
 
-    public Cliente getcpfCliente() {
+    public void setTransferir(double saldo, ContaBancoMaut c2) {
+        this.saldo = this.saldo - saldo;
+        c2.saldo = c2.saldo + saldo;
+    } 
+
+    public AberturaConta getcpfCliente() {
         return this.cpfCliente;
     }
      
