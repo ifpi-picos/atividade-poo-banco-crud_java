@@ -2,40 +2,42 @@ package br.edu.ifpi.dominio;
 
 import java.time.LocalDate;
 
-public class Cliente {       
+public class Cliente {
     
-    private String nome;
     private String cpf;
+    private String nome;
     private LocalDate dataNascimento;
-    private String endereco;
+    private Endereco endereco;
+    private Conta conta;
 
-    public Cliente(String nome, String cpf, LocalDate dataNascimento, String endereco) {       
-        
-        this.nome = nome;
+    public Cliente(String cpf, String nome, LocalDate dataNascimento, Endereco endereco, Conta conta) {
+
         this.cpf = cpf;
+        this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
+        this.conta = conta;
 
-    }
-
-    public String getNome() {
-        return nome;
     }
 
     public String getCpf() {
         return this.cpf;
     }
 
-    public LocalDate getDataNascimento() {
+    public String getNome() {
+        return this.nome;
+    }
+
+    public LocalDate getDataNascimeno() {
         return this.dataNascimento;
     }
 
-    public String getEndereco() {
+    public Endereco getEndereco() {
         return this.endereco;
     }
 
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
+    public Conta getConta() {
+        return this.conta;
     }
-    
+
 }
