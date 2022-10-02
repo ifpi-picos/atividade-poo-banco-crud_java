@@ -15,9 +15,13 @@ public class Cliente {
         this.cpf = cpf;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
-        this.endereco = endereco;
-        this.conta = conta;
+        this.endereco = new Endereco();
+        this.conta = new Conta();
 
+    }
+
+    public Cliente() {
+        
     }
 
     public String getCpf() {
