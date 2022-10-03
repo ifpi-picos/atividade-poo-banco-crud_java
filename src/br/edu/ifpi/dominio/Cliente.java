@@ -3,25 +3,17 @@ package br.edu.ifpi.dominio;
 import java.time.LocalDate;
 
 public class Cliente {
-    
+
     private String cpf;
     private String nome;
     private LocalDate dataNascimento;
     private Endereco endereco;
-    private Conta conta;
-
-    public Cliente(String cpf, String nome, LocalDate dataNascimento, Endereco endereco, Conta conta) {
-
+    
+    public Cliente(String cpf, String nome, LocalDate dataNascimento, Endereco endereco) {
         this.cpf = cpf;
         this.nome = nome;
         this.dataNascimento = dataNascimento;
-        this.endereco = new Endereco();
-        this.conta = new Conta();
-
-    }
-
-    public Cliente() {
-        
+        this.endereco = endereco;
     }
 
     public String getCpf() {
@@ -32,16 +24,12 @@ public class Cliente {
         return this.nome;
     }
 
-    public LocalDate getDataNascimeno() {
+    public LocalDate getDataNascimento() {
         return this.dataNascimento;
     }
-
+    
     public Endereco getEndereco() {
         return this.endereco;
-    }
-
-    public Conta getConta() {
-        return this.conta;
     }
 
 }

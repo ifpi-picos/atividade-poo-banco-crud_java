@@ -1,12 +1,22 @@
 package br.edu.ifpi.dominio;
 
 public class Conta {
-    
+
     private int numeroAgencia;
     private int numeroConta;
     private double saldo;
+    private Cliente cliente;
 
-    public int getNumeroAgencia() {
+    public Conta(int numeroAgencia, int numeroConta, double saldo, Cliente cliente) {
+
+        this.numeroAgencia = numeroAgencia;
+        this.numeroConta = numeroConta;
+        this.saldo = saldo;
+        this.cliente = cliente;
+
+    }
+
+    public int getNumeroagencia() {
         return this.numeroAgencia;
     }
 
@@ -14,8 +24,12 @@ public class Conta {
         return this.numeroConta;
     }
 
-    public double getSaldo() {
+    public double getsaldo() {
         return this.saldo;
+    }
+
+    public Cliente getCliente() {
+        return this.cliente;
     }
 
     public boolean setDepositar(double saldo) {
@@ -28,23 +42,18 @@ public class Conta {
         return saldo;
     }
 
-    public void setTransferir(double saldo, Conta destinario) {
+    public void setTransferir(double saldo, Conta destinatario) {
         this.saldo -= saldo;
-        destinario.saldo += saldo;
+        destinatario.saldo += saldo;
     }
 
-    public void getInfoConta() {
+    public void getDadosConta() {
         System.out.println();
-        System.out.println("Número da Agẽncia: " + this.numeroAgencia);
-        System.out.println("Número da Conta: " + this.numeroConta);
-        System.out.println("Saldo: " + this.saldo);
+        System.out.println("Número da Agẽncia: " + getNumeroagencia());
+        System.out.println("Número da Conta: " + getNumeroConta());
+        System.out.println("Saldo: R$" + getsaldo());
+        System.out.println("Proprietário: " + getCliente().getCpf());
         System.out.println();
-    }
-
-    public void setAberturaConta(int numeroAgencia, int numeroConta, double saldo) {
-        this.numeroAgencia = numeroAgencia;
-        this.numeroConta = numeroConta;
-        this.saldo = saldo;
     }
 
 }
