@@ -38,8 +38,17 @@ public class Conta {
     }
 
     public double setSacar(double saldo) {
-        this.saldo -= saldo;
-        return saldo;
+        
+        if (this.saldo < saldo) {
+            System.out.println("Negado! Valor do saque maior que saldo da conta.");
+            return saldo;
+        }
+
+        else {
+            this.saldo -= saldo;
+            return saldo;
+        }
+
     }
 
     public void setTransferir(double saldo, Conta destinatario) {
