@@ -14,6 +14,14 @@ public class ContaCorrente extends Conta {
     public double getChequeEspecial() {
         return this.chequeEspecial;
     }
-    
-}
 
+    @Override
+    public String toString() {
+        return "[" + this.getNumeroAgencia() + ", " 
+                   + this.getNumeroConta() + ", "
+                   + this.getSaldo() + ", "
+                   + this.getCliente() + ", "
+                   + this.getChequeEspecial() + "]";
+    }
+
+}    

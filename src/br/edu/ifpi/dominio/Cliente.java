@@ -32,4 +32,12 @@ public class Cliente {
         return this.endereco;
     }
 
+    @Override
+    public String toString() {
+        return "[" + this.getCpf() + ", " 
+                   + this.getNome() + ", " 
+                   + this.getDataNascimento() + ", " 
+                   + this.getEndereco() + "]";
+    }
+
 }

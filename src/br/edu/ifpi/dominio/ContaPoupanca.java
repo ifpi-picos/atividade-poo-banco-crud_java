@@ -7,7 +7,7 @@ public class ContaPoupanca extends Conta {
     public ContaPoupanca(int numeroAgencia, int numeroConta, double saldo, Cliente cliente, double rendimento) {
 
         super(numeroAgencia, numeroConta, saldo, cliente);
-        this.rendimento = rendimento;
+        this.rendimento = this.getSaldo() * 0.10;
     
     }
 
@@ -15,6 +15,13 @@ public class ContaPoupanca extends Conta {
         return this.rendimento;
     }
 
+    @Override
+    public String toString() {
+        return "[" + this.getNumeroAgencia() + ", " 
+                   + this.getNumeroConta() + ", "
+                   + this.getSaldo() + ", "
+                   + this.getCliente() + ", "
+                   + this.getRendimento() + "]";
+    }
+
 }
-
-

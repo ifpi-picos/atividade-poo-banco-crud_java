@@ -38,14 +38,13 @@ public class Endereco {
         return uf;
     }
 
-    public void getEnderecoCompleto() {
-        System.out.println();
-        System.out.println("Rua: " + getLogradouro());
-        System.out.println("Número: " + getNumero());
-        System.out.println("Bairro: " + getBairro());
-        System.out.println("Cidade: " + getCidade());
-        System.out.println("Unidade Federativa: " + getUf());
-        System.out.println();
+    @Override
+    public String toString() {
+        return "[" + this.logradouro + ", " 
+                   + this.numero + ", " 
+                   + this.bairro + ", " 
+                   + this.cidade + ", " 
+                   + this.uf + "]";
     }
 
 }

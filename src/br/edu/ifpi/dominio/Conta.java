@@ -1,6 +1,6 @@
 package br.edu.ifpi.dominio;
 
-public class Conta {
+public abstract class Conta {
 
     private int numeroAgencia;
     private int numeroConta;
@@ -16,7 +16,7 @@ public class Conta {
 
     }
 
-    public int getNumeroagencia() {
+    public int getNumeroAgencia() {
         return this.numeroAgencia;
     }
 
@@ -24,7 +24,7 @@ public class Conta {
         return this.numeroConta;
     }
 
-    public double getsaldo() {
+    public double getSaldo() {
         return this.saldo;
     }
 
@@ -32,37 +32,19 @@ public class Conta {
         return this.cliente;
     }
 
-    public boolean setDepositar(double saldo) {
+    public boolean Depositar(double saldo) {
         this.saldo += saldo;
         return true;
     }
 
-    public double setSacar(double saldo) {
-        
-        if (this.saldo < saldo) {
-            System.out.println("Negado! Valor do saque maior que saldo da conta.");
-            return saldo;
-        }
-
-        else {
-            this.saldo -= saldo;
-            return saldo;
-        }
-
+    public double Sacar(double saldo) {
+        this.saldo -= saldo;
+        return saldo;
     }
-
-    public void setTransferir(double saldo, Conta destinatario) {
+    
+    public void Transferir(double saldo, Conta destinatario) {
         this.saldo -= saldo;
         destinatario.saldo += saldo;
-    }
-
-    public void getDadosConta() {
-        System.out.println();
-        System.out.println("Número da Agẽncia: " + getNumeroagencia());
-        System.out.println("Número da Conta: " + getNumeroConta());
-        System.out.println("Saldo: R$" + getsaldo());
-        System.out.println("Proprietário: " + getCliente().getCpf());
-        System.out.println();
     }
 
 }
