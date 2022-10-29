@@ -6,13 +6,15 @@ public abstract class Conta {
     private int numeroConta;
     private double saldo;
     private Cliente cliente;
+    private Notificacao notificacao;
 
-    public Conta(int numeroAgencia, int numeroConta, double saldo, Cliente cliente) {
+    public Conta(int numeroAgencia, int numeroConta, double saldo, Cliente cliente, Notificacao notificacao) {
 
         this.numeroAgencia = numeroAgencia;
         this.numeroConta = numeroConta;
         this.saldo = saldo;
         this.cliente = cliente;
+        this.notificacao = notificacao;
 
     }
 
@@ -32,19 +34,27 @@ public abstract class Conta {
         return this.cliente;
     }
 
-    public boolean Depositar(double saldo) {
+    public Notificacao getNotificacao() {
+        return this.notificacao;
+    }
+
+    public boolean deposita(double saldo) {
         this.saldo += saldo;
         return true;
     }
 
-    public double Sacar(double saldo) {
+    public double saca(double saldo) {
         this.saldo -= saldo;
         return saldo;
     }
     
-    public void Transferir(double saldo, Conta destinatario) {
+    public void transfere(double saldo, Conta destinatario) {
         this.saldo -= saldo;
         destinatario.saldo += saldo;
+    }
+
+    public void enviaNotificacao(String operacao, double valor) {
+        this.notificacao.enviaNotificacao(operacao, valor);
     }
 
 }

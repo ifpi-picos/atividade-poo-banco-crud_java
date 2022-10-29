@@ -4,9 +4,9 @@ public class ContaCorrente extends Conta {
     
     private double chequeEspecial;
 
-    public ContaCorrente(int numeroAgencia, int numeroConta, double saldo, Cliente cliente, double chequeEspecial) {
+    public ContaCorrente(int numeroAgencia, int numeroConta, double saldo, Cliente cliente, Notificacao notificacao, double chequeEspecial) {
         
-        super(numeroAgencia, numeroConta, saldo, cliente);
+        super(numeroAgencia, numeroConta, saldo, cliente, notificacao);
         this.chequeEspecial = chequeEspecial;
         
     }
@@ -21,6 +21,7 @@ public class ContaCorrente extends Conta {
                    + this.getNumeroConta() + ", "
                    + this.getSaldo() + ", "
                    + this.getCliente() + ", "
+                   + this.getNotificacao() + ", "
                    + this.getChequeEspecial() + "]";
     }
 
