@@ -16,21 +16,27 @@ public class App {
 
         List<ContaCorrente> contaCorrentes = new ArrayList<>();
         List<ContaPoupanca> contaPoupancas = new ArrayList<>();
-        List<String> cpfs = new ArrayList<>();
+
         List<String> verificaCpfCc = new ArrayList<>();
         List<String> verificaCpfCp = new ArrayList<>();
+        List<String> cpfs = new ArrayList<>();
+
         List<Integer> numeroAgenciaList = new ArrayList<>();
         List<Integer> numeroContaList = new ArrayList<>(); 
 
-        int opcao, opConta, numeroAgencia, numeroConta;
+        int opcao, opConta, opNot, numeroAgencia, numeroConta;
                 
         String nome, cpf, dtString; LocalDate dataNascimento;
                 
         String logradouro, bairro, cidade, uf; int numero;
 
+        Notificacao notificacao = null;
+
         System.out.println("\nBem-vindo ao Sistema do BancoMaut\n");
                 
         while (true) {
+
+            //MENU
             
             System.out.println("O que deseja fazer?");
             
@@ -57,6 +63,8 @@ public class App {
                 System.out.println();
 
             }
+
+            //CRIAR CONTA
             
             if (opcao == 1) {
                 
@@ -142,7 +150,7 @@ public class App {
                     cpfs.add(cpf);
                 }
 
-                System.out.print("Sua data de nascimento (dia/mês/ano): ");
+                System.out.print("Sua data de nascimento (DD/MM/AAAA): ");
                 dtString = scanner.next();
 
                 String[] dtVetor = dtString.split("/");
@@ -181,6 +189,42 @@ public class App {
                 uf = scanner.next();
 
                 System.out.println();
+
+                System.out.println("\nPor onde gostaria de receber Notificações?");
+
+                System.out.println("\n\t1 - Email\n\t2 - SMS\n");
+
+                System.out.print("Informe sua opção aqui: ");
+                opNot = scanner.nextInt();
+
+                System.out.println();
+
+                while (opNot < 1 || opNot > 2) {
+                    
+                    System.out.println("Opção Inválida!");
+
+                    System.out.println();
+
+                    System.out.println("Por onde gostaria de receber Notificações?\n");
+                    
+                    System.out.println("\n\t1 - Email\n\t2 - SMS\n");
+                    
+                    System.out.print("Informe sua opção: aqui ");
+                    opNot = scanner.nextInt();
+                    
+                    System.out.println();
+
+                }
+
+                if (opNot == 1) {
+                    Notificacao email = new Email();
+                    notificacao = email;
+                }
+
+                else if (opNot == 2) {
+                    Notificacao sms = new Sms();
+                    notificacao = sms;
+                }
                     
                 Endereco endereco = new Endereco(logradouro, numero, bairro, cidade, uf);
                 
@@ -192,7 +236,6 @@ public class App {
                 numeroConta = random.nextInt(10000, 100000);
 
                 while (numeroContaList.contains(numeroConta) == true) {
-                    System.out.println("\nGenrando número da conta...\n");
                     numeroConta = random.nextInt(10000, 100000);
                 }
 
@@ -200,10 +243,11 @@ public class App {
 
                 if (opConta == 1) {
 
-                    ContaCorrente contaCorrente = new ContaCorrente(numeroAgencia, 
-                                                                    numeroConta, 
-                                                                    0, 
-                                                                    cliente, 
+                    ContaCorrente contaCorrente = new ContaCorrente(numeroAgencia,
+                                                                    numeroConta,
+                                                                    numeroConta,
+                                                                    cliente,
+                                                                    notificacao,
                                                                     1000);
 
                     contaCorrentes.add(contaCorrente);
@@ -221,10 +265,11 @@ public class App {
 
                 if (opConta == 2) {
 
-                    ContaPoupanca contaPoupanca = new ContaPoupanca(numeroAgencia, 
-                                                                    numeroConta, 
-                                                                    0, 
-                                                                    cliente, 
+                    ContaPoupanca contaPoupanca = new ContaPoupanca(numeroAgencia,
+                                                                    numeroConta,
+                                                                    numeroConta,
+                                                                    cliente,
+                                                                    notificacao,
                                                                     0);
 
                     contaPoupancas.add(contaPoupanca);
@@ -240,15 +285,25 @@ public class App {
 
                 }
 
-            }
-
-            if (opcao == 3) {
+                System.out.println();
 
             }
 
+            //ACESSAR CONTA
+
+            if (opcao == 2) {
+
+            }
+
+            //SAIR DO SISTEMA
+
             if (opcao == 3) {
+                
                 System.out.println("Sistema encerrado com sucesso!");
+                System.out.println();
+
                 break;
+                
             }
 
         }
