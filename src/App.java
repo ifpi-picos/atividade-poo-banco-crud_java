@@ -16,10 +16,13 @@ public class App {
 
         List<ContaCorrente> contaCorrentes = new ArrayList<>();
         List<ContaPoupanca> contaPoupancas = new ArrayList<>();
-        List<String> cpfsCC = new ArrayList<>();
-        List<String> cpfsCP = new ArrayList<>();
+        List<String> cpfs = new ArrayList<>();
+        List<String> verificaCpfCc = new ArrayList<>();
+        List<String> verificaCpfCp = new ArrayList<>();
+        List<Integer> numeroAgenciaList = new ArrayList<>();
+        List<Integer> numeroContaList = new ArrayList<>(); 
 
-        int opcao; int opConta;
+        int opcao, opConta, numeroAgencia, numeroConta;
                 
         String nome, cpf, dtString; LocalDate dataNascimento;
                 
@@ -99,7 +102,7 @@ public class App {
 
                 if (opConta == 1) {
                     
-                    while (cpfsCC.contains(cpf) == true) {
+                    while (verificaCpfCc.contains(cpf) == true) {
                     
                         System.out.println("CPF já cadastrado no Sistema!");
     
@@ -112,13 +115,13 @@ public class App {
     
                     }
 
-                    cpfsCC.add(cpf);
+                    verificaCpfCc.add(cpf);
                     
                 }
 
                 if (opConta == 2) {
 
-                    while (cpfsCP.contains(cpf) == true) {
+                    while (verificaCpfCp.contains(cpf) == true) {
                     
                         System.out.println("CPF já cadastrado no Sistema!");
     
@@ -131,10 +134,13 @@ public class App {
     
                     }
 
-                    cpfsCP.add(cpf);
+                    verificaCpfCp.add(cpf);
 
                 }
 
+                if (cpfs.contains(cpf) == false) {
+                    cpfs.add(cpf);
+                }
 
                 System.out.print("Sua data de nascimento (dia/mês/ano): ");
                 dtString = scanner.next();
@@ -180,8 +186,17 @@ public class App {
                 
                 Cliente cliente = new Cliente(cpf, nome, dataNascimento, endereco);
 
-                int numeroAgencia = random.nextInt(10, 100);
-                int numeroConta = random.nextInt(10000, 100000);
+                numeroAgencia = random.nextInt(10, 100);
+                numeroAgenciaList.add(numeroAgencia);
+
+                numeroConta = random.nextInt(10000, 100000);
+
+                while (numeroContaList.contains(numeroConta) == true) {
+                    System.out.println("\nGenrando número da conta...\n");
+                    numeroConta = random.nextInt(10000, 100000);
+                }
+
+                numeroContaList.add(numeroConta);
 
                 if (opConta == 1) {
 
@@ -194,6 +209,12 @@ public class App {
                     contaCorrentes.add(contaCorrente);
 
                     System.out.println("Conta Corrente criada com sucesso!");
+                    
+                    System.out.println();
+
+                    System.out.println("Número da Agẽncia: " + numeroAgencia);
+                    System.out.println("Número da Conta: " + numeroConta);
+
                     System.out.println();
 
                 }
@@ -209,18 +230,19 @@ public class App {
                     contaPoupancas.add(contaPoupanca);
 
                     System.out.println("Conta Poupança criada com sucesso!");
+                    
+                    System.out.println();
+
+                    System.out.println("Número da Agẽncia: " + numeroAgencia);
+                    System.out.println("Número da Conta: " + numeroConta);
+
                     System.out.println();
 
                 }
 
-                //System.out.println(contaCorrentes.get(0).getCliente().getCpf());
-                //System.out.println();
+            }
 
-                System.out.println(contaCorrentes);
-                System.out.println();
-
-                System.out.println(contaPoupancas);
-                System.out.println();
+            if (opcao == 3) {
 
             }
 
@@ -230,6 +252,8 @@ public class App {
             }
 
         }
+
+        scanner.close();
 
     }
 
