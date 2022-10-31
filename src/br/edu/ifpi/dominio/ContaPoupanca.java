@@ -15,6 +15,10 @@ public class ContaPoupanca extends Conta {
         return this.rendimento;
     }
 
+    public double setRendimento(double rendimento) {
+        return this.rendimento = rendimento;
+    }
+
     @Override
     public String toString() {
         return "[" + this.getNumeroAgencia() + ", " 

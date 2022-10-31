@@ -15,6 +15,10 @@ public class ContaCorrente extends Conta {
         return this.chequeEspecial;
     }
 
+    public double setChequeEspecial(double chequeEspecial) {
+        return this.chequeEspecial -= chequeEspecial; 
+    }
+
     @Override
     public String toString() {
         return "[" + this.getNumeroAgencia() + ", " 
