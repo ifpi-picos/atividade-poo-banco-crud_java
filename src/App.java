@@ -1,4 +1,5 @@
 import br.edu.ifpi.dominio.*;
+
 import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.Random;
@@ -28,7 +29,9 @@ public class App {
 
         //Declarações de variáveis:
 
-        int opN1, opN2, opN3, opN4, opN5;
+        int opN1, opN2, opN3, opN4, opN5, opN6, cont = 1;
+
+        double deposito, saque, transferencia, taxa = 0.05;
                 
         String cpf, nome, dtString; LocalDate dataNascimento;
                 
@@ -36,17 +39,19 @@ public class App {
 
         Notificacao notificacao = null;
 
-        int numeroAgencia, numeroConta; double saldo = 0, chequeEspecial = 1000, rendimento = 0.10;
+        int numeroAgencia, numeroConta; double saldo = 0, chequeEspecial = 1000, rendimento = 0;
 
-        System.out.println("\nBem-vindo ao Sistema do BancoMaut\n");
+        System.out.println("\n>>>>> SISTEMA DO BANCO MAUT <<<<<\n");
                 
         while (true) {
 
             //MENU INCIAL
             
-            System.out.println("MENU INICIAL");
+            System.out.println("\n[MENU INICIAL]\n");
 
             System.out.println();
+
+            System.out.println("Opções:");
             
             System.out.println("\n\t1 - Criar Conta\n\t2 - Acessar conta\n\t3 - Sair do Sistema");
 
@@ -59,7 +64,9 @@ public class App {
 
                 System.out.println("\nOpção Inválida!\n");
 
-                System.out.println("MENU INICIAL");
+                System.out.println();
+
+                System.out.println("Opções:");
                 
                 System.out.println("\n\t1 - Criar Conta\n\t2 - Acessar conta\n\t3 - Sair do Sistema");
 
@@ -78,13 +85,13 @@ public class App {
 
                 while (true) {
 
-                    System.out.println("\nOPÇÃO 1 (CRIAR CONTA)\n");
+                    System.out.println("\n[CRIAR CONTA]\n");
 
                     System.out.println();
 
                     System.out.println("Opções: ");
                     
-                    System.out.println("\n\t1 - Criar Conta Corrente\n\t2 - Criar Conta Poupança\n\t3 - Voltar para MENU INICIAL");
+                    System.out.println("\n\t1 - Conta Corrente\n\t2 - Conta Poupança\n\t3 - Voltar para MENU INICIAL");
 
                     System.out.println();
     
@@ -97,7 +104,7 @@ public class App {
     
                         System.out.println("Opções: ");
                         
-                        System.out.println("\n\t1 - Criar Conta Corrente\n\t2 - Criar Conta Poupança\n\t3 - Voltar para MENU INICIAL");
+                        System.out.println("\n\t1 - Conta Corrente\n\t2 - Conta Poupança\n\t3 - Voltar para MENU INICIAL");
 
                         System.out.println();
     
@@ -110,9 +117,7 @@ public class App {
 
                     if (opN2 == 1 || opN2 == 2) {
 
-                        System.out.println("\nDados Pessoais");
-        
-                        System.out.println();
+                        System.out.println("\nDADOS PESSOAIS\n");
         
                         System.out.print("Nome: ");
                         nome = scanner.nextLine();
@@ -178,9 +183,7 @@ public class App {
         
                         System.out.println();
         
-                        System.out.println("\nDados Complementares");
-
-                        System.out.println();
+                        System.out.println("\nDADOS COMPLEMENTARES\n");
         
                         System.out.print("Rua: ");
                         logradouro = scanner.nextLine();
@@ -209,7 +212,9 @@ public class App {
         
                         System.out.println();
         
-                        System.out.println("\nForma de envio de Notificações:");
+                        System.out.println("\nRECEBIMENTO DE NOTIFICAÇÕES\n");
+
+                        System.out.println("Opções:");
         
                         System.out.println("\n\t1 - Email\n\t2 - SMS");
 
@@ -222,7 +227,7 @@ public class App {
                             
                             System.out.println("\nOpção Inválida!\n");
         
-                            System.out.println("Forma de envio de Notificações:");
+                            System.out.println("Opções:");
                             
                             System.out.println("\n\t1 - Email\n\t2 - SMS");
 
@@ -271,7 +276,7 @@ public class App {
         
                             contaCorrentes.add(contaCorrente);
 
-                            System.out.println("Conta Corrente criada com SUCESSO!");
+                            System.out.println("\nConta Corrente criada com SUCESSO!");
         
                         }
         
@@ -286,14 +291,13 @@ public class App {
         
                             contaPoupancas.add(contaPoupanca);
         
-                            System.out.println("Conta Poupança criada com SUCESSO!");
+                            System.out.println("\nConta Poupança criada com SUCESSO!");
         
                         }
 
                     }
 
                     else {
-                        System.out.println();
                         break;
                     }
 
@@ -309,26 +313,26 @@ public class App {
 
                 while (true) {
                     
-                    System.out.println("\nOPÇÃO 2 (ACESSAR CONTA)\n");
+                    System.out.println("\n[ACESSAR CONTA]\n");
     
                     System.out.println();
     
                     System.out.println("Opções:");
         
-                    System.out.println("\n\t1 - Acessar Conta Corrente\n\t2 - Acessar Conta Poupança\n\t3 - Voltar para MENU INICIAL");
+                    System.out.println("\n\t1 - Conta Corrente\n\t2 - Conta Poupança\n\t3 - Voltar para MENU INICIAL");
     
                     System.out.println();
         
                     System.out.print("Informe sua opção aqui: ");
                     opN2 = scanner.nextInt();
-
-                    System.out.println();
         
                     while (opN2 < 1 || opN2 > 3) {
         
                         System.out.println("\nOpção Inválida!\n");
-        
-                        System.out.println("ACESSO DE CONTAS:");
+
+                        System.out.println();
+
+                        System.out.println("Opções:");
                             
                         System.out.println("\n\t1 - Conta Corrente\n\t2 - Conta Poupança\n\t3 - Voltar para MENU INICIAL");
     
@@ -343,55 +347,62 @@ public class App {
 
                     if (opN2 == 1 || opN2 == 2) {
 
-                        System.out.print("Login (XXX.XXX.XXX-XX): ");
+                        System.out.println("\nLOGIN\n");
+
+                        System.out.println();
+
+                        System.out.print("CPF (XXX.XXX.XXX-XX): ");
                         cpf = scanner.next();
         
                         while (cpfs.contains(cpf) == false) {
                             
-                            System.out.println("\nInválido! CPF informado não cadastrado no Sistema\n");
+                            System.out.println("\nCPF informado não cadastrado no Sistema!\n");
         
                             System.out.println();
                             
-                            System.out.print("Login (XXX.XXX.XXX-XX): ");
+                            System.out.print("CPF (XXX.XXX.XXX-XX): ");
                             cpf = scanner.next();
-        
+
                         }
         
                         System.out.println();
+
+                        //ACESSO A CONTA CORRENTE
         
                         if (opN2 == 1) {
         
                             for (ContaCorrente iterable_element : contaCorrentes) {
         
                                 if (cpf.equals(iterable_element.getCliente().getCpf())) {
+
+                                    //MENU PRINCIPAL
         
                                     while (true) {
         
-                                        System.out.println("MENU PRINCIPAL DA CONTA CORRENTE");
+                                        System.out.println("\n[MENU PRINCIPAL DA CONTA CORRENTE]\n");
                         
                                         System.out.println();
                                         
-                                        System.out.println("Login: " + cpf);
+                                        System.out.println("Proprietário(a): " + iterable_element.getCliente().getNome());
                         
                                         System.out.println();
                                         
                                         System.out.println("Número Agência: " + iterable_element.getNumeroAgencia());
                                         System.out.println("Número Conta: " + iterable_element.getNumeroConta());
                                         System.out.println("Saldo: " + iterable_element.getSaldo());
-                                        System.out.println("Proprietário: " + iterable_element.getCliente().getNome());
                         
                                         System.out.println();
                         
                                         System.out.println("Opções:");
                         
-                                        System.out.println("\n\t1 - Acessar Dados\n\t2 - Operações\n\t3 - Sair da Conta");
+                                        System.out.println("\n\t1 - Acessar Dados\n\t2 - Realizar Operações\n\t3 - Sair da Conta");
                         
                                         System.out.println();
                         
                                         System.out.print("Infome sua opção aqui: ");
-                                        opN2 = scanner.nextInt();
+                                        opN3 = scanner.nextInt();
                         
-                                        while (opN2 < 1 || opN2 > 3) {
+                                        while (opN3 < 1 || opN3 > 3) {
                         
                                             System.out.println("\nOpção Inválida!\n");
         
@@ -399,68 +410,70 @@ public class App {
                         
                                             System.out.println("Opções:");
                         
-                                            System.out.println("\n\t1 - Acessar Dados\n\t2 - Operações\n\t3 - Sair da Conta");
+                                            System.out.println("\n\t1 - Acessar Dados\n\t2 - Realizar Operações\n\t3 - Sair da Conta");
                         
                                             System.out.println();
                         
                                             System.out.print("Infome sua opção aqui: ");
-                                            opN2 = scanner.nextInt();
+                                            opN3 = scanner.nextInt();
         
                                         }
                                         
                                         System.out.println();
         
-                                        if (opN2 == 1) {
+                                        if (opN3 == 1) {
         
                                             while (true) {
         
-                                                System.out.println("DADOS DA CONTA");
+                                                System.out.println("\nDADOS DA CONTA\n");
         
                                                 System.out.println();
                                                 
                                                 System.out.println("Opções:");
                                 
-                                                System.out.println("\n\t1 - Número da Agência\n\t2 - Número da Conta\n\t3 - Saldo\n\t4 - Cliente\n\t5 - Cheque Especial\n\t6 - Forma de envio de Notificação\n\t7 - Voltar para MENU PRINCIPAL");
+                                                System.out.println("\n\t1 - Número da Agência\n\t2 - Número da Conta\n\t3 - Saldo\n\t4 - Cliente\n\t5 - Cheque Especial\n\t6 - Recebimento de Notificação\n\t7 - Voltar para MENU PRINCIPAL");
                                 
                                                 System.out.println();
                                 
                                                 System.out.print("Informe sua opção aqui: ");
-                                                opN3 = scanner.nextInt();
+                                                opN4 = scanner.nextInt();
                                 
-                                                while (opN3 < 1 || opN3 > 7) {
+                                                while (opN4 < 1 || opN4 > 7) {
                                 
                                                     System.out.println("\nOpção Inválida!\n");
                                 
-                                                    System.out.println("DADOS DA CONTA:");
+                                                    System.out.println();
+
+                                                    System.out.println("Opções:");
                                 
-                                                    System.out.println("\n\t1 - Número da Agência\n\t2 - Número da Conta\n\t3 - Saldo\n\t4 - Cliente\n\t5 - Cheque Especial\n\t6 - Forma de envio de Notificação\n\t7 - Voltar para MENU PRINCIPAL");
+                                                    System.out.println("\n\t1 - Número da Agência\n\t2 - Número da Conta\n\t3 - Saldo\n\t4 - Cliente\n\t5 - Cheque Especial\n\t6 - Recebimento de Notificação\n\t7 - Voltar para MENU PRINCIPAL");
                                                     
                                                     System.out.println();
                                 
                                                     System.out.print("Informe sua opção aqui: ");
-                                                    opN3 = scanner.nextInt();
+                                                    opN4 = scanner.nextInt();
                                 
                                                 }
                                                 
-                                                System.out.println();
+                                                System.out.println("\n");
                                                 
-                                                if (opN3 == 1) {
-                                                    System.out.println("Número da Agência: " + iterable_element.getNumeroAgencia());
+                                                if (opN4 == 1) {
+                                                    System.out.println("--> Número da Agência: " + iterable_element.getNumeroAgencia());
                                                 }
                                 
-                                                else if (opN3 == 2) {
-                                                    System.out.println("Número da Conta: " + iterable_element.getNumeroConta());
+                                                else if (opN4 == 2) {
+                                                    System.out.println("--> Número da Conta: " + iterable_element.getNumeroConta());
                                                 }
                                 
-                                                else if (opN3 == 3) {
-                                                    System.out.println("Saldo: " + iterable_element.getSaldo());
+                                                else if (opN4 == 3) {
+                                                    System.out.println(" --> Saldo: " + iterable_element.getSaldo());
                                                 }
         
-                                                else if (opN3 == 4) {
+                                                else if (opN4 == 4) {
                                 
                                                     while (true) {
                                                         
-                                                        System.out.println("DADOS DO CLIENTE:");
+                                                        System.out.println("\nDADOS DO CLIENTE\n");
         
                                                         System.out.println();
         
@@ -471,9 +484,9 @@ public class App {
                                                         System.out.println();
                                 
                                                         System.out.print("Informe sua opção aqui: ");
-                                                        opN4 = scanner.nextInt();
+                                                        opN5 = scanner.nextInt();
                                 
-                                                        while (opN4 < 1 || opN4 > 5) {
+                                                        while (opN5 < 1 || opN5 > 5) {
                                 
                                                             System.out.println("\nOpção Inválida!\n");
         
@@ -486,29 +499,29 @@ public class App {
                                                             System.out.println();
                                 
                                                             System.out.print("Informe sua opção aqui: ");
-                                                            opN4 = scanner.nextInt();
+                                                            opN5 = scanner.nextInt();
                                 
                                                         }
                                 
-                                                        System.out.println();
+                                                        System.out.println("\n");
         
-                                                        if (opN4 == 1) {
-                                                            System.out.println("CPF: " + iterable_element.getCliente().getCpf());
+                                                        if (opN5 == 1) {
+                                                            System.out.println("--> CPF: " + iterable_element.getCliente().getCpf());
                                                         }
                                         
-                                                        else if (opN4 == 2) {
-                                                            System.out.println("Nome: " + iterable_element.getCliente().getNome());
+                                                        else if (opN5 == 2) {
+                                                            System.out.println("--> Nome: " + iterable_element.getCliente().getNome());
                                                         }
                                         
-                                                        else if (opN4 == 3) {
-                                                            System.out.println("Data de Nascimento: " + iterable_element.getCliente().getDataNascimento());
+                                                        else if (opN5 == 3) {
+                                                            System.out.println("--> Data de Nascimento: " + iterable_element.getCliente().getDataNascimento());
                                                         }
         
-                                                        else if (opN4 == 4) {
+                                                        else if (opN5 == 4) {
                                         
                                                             while (true) {
                                                                           
-                                                                System.out.println("DADOS DO ENDEREÇO:");
+                                                                System.out.println("\nDADOS DO ENDEREÇO\n");
                                         
                                                                 System.out.println();
                                         
@@ -519,9 +532,9 @@ public class App {
                                                                 System.out.println();
                                         
                                                                 System.out.print("Informe sua opção aqui: ");
-                                                                opN5 = scanner.nextInt();
+                                                                opN6 = scanner.nextInt();
                                         
-                                                                while (opN5 < 1 || opN5 > 6) {
+                                                                while (opN6 < 1 || opN6 > 6) {
                                         
                                                                     System.out.println("\nOpção Inválida!\n");
                                         
@@ -534,30 +547,30 @@ public class App {
                                                                     System.out.println();
                                         
                                                                     System.out.print("Informe sua opção aqui: ");
-                                                                    opN5 = scanner.nextInt();
+                                                                    opN6 = scanner.nextInt();
                                                                     
                                                                 }
                                         
-                                                                System.out.println();
+                                                                System.out.println("\n");
                                         
-                                                                if (opN5 == 1) {
-                                                                    System.out.println("Rua: " +iterable_element.getCliente().getEndereco().getLogradouro());
+                                                                if (opN6 == 1) {
+                                                                    System.out.println("--> Rua: " +iterable_element.getCliente().getEndereco().getLogradouro());
                                                                 }
                                         
-                                                                else if (opN5 == 2) {
-                                                                    System.out.println("Número: " +iterable_element.getCliente().getEndereco().getNumero());
+                                                                else if (opN6 == 2) {
+                                                                    System.out.println("--> Número: " +iterable_element.getCliente().getEndereco().getNumero());
                                                                 }
                                         
-                                                                else if (opN5 == 3) {
-                                                                    System.out.println("Bairro: " +iterable_element.getCliente().getEndereco().getBairro());
+                                                                else if (opN6 == 3) {
+                                                                    System.out.println("--> Bairro: " +iterable_element.getCliente().getEndereco().getBairro());
                                                                 }
                                         
-                                                                else if (opN5 == 4) {
-                                                                    System.out.println("Cidade: " +iterable_element.getCliente().getEndereco().getCidade());
+                                                                else if (opN6 == 4) {
+                                                                    System.out.println("--> Cidade: " +iterable_element.getCliente().getEndereco().getCidade());
                                                                 }
                                         
-                                                                else if (opN5 == 5) {
-                                                                    System.out.println("Unidade Federativa: " +iterable_element.getCliente().getEndereco().getUf());
+                                                                else if (opN6 == 5) {
+                                                                    System.out.println("--> Unidade Federativa: " +iterable_element.getCliente().getEndereco().getUf());
                                                                 }
                                         
                                                                 else {
@@ -580,12 +593,12 @@ public class App {
     
                                                 }
         
-                                                else if (opN3 == 5) {
-                                                    System.out.println("Cheque Especial: " + iterable_element.getChequeEspecial());
+                                                else if (opN4 == 5) {
+                                                    System.out.println("--> Cheque Especial: " + iterable_element.getChequeEspecial());
                                                 }
         
-                                                else if (opN3 == 6) {
-                                                    System.out.println("Forma de envio de Notificações: " + iterable_element.getNotificacao());
+                                                else if (opN4 == 6) {
+                                                    System.out.println("--> Recebimento de Notificações: " + iterable_element.getNotificacao());
                                                 }
         
                                                 else {
@@ -598,8 +611,975 @@ public class App {
     
                                         }
         
-                                        else if (opN2 == 2) {
+                                        else if (opN3 == 2) {
+
+                                            while (true) {
+                                                
+                                                System.out.println("\nOPERAÇÕES\n");
+    
+                                                System.out.println();
+    
+                                                System.out.println("Opções:");
+    
+                                                System.out.println("\n\t1 - Depositar\n\t2 - Sacar\n\t3 - Transferir\n\t4 - Voltar para MENU PRINCIPAL");
+    
+                                                System.out.println();
+    
+                                                System.out.print("Informe sua opção aqui: ");
+                                                opN4 = scanner.nextInt();
+    
+                                                while (opN4 < 1 || opN4 > 4) {
+    
+                                                    System.out.println("\nOpção Inválida!\n");
+    
+                                                    System.out.println();
+                                                    
+                                                    System.out.println("Opções:");
+                                                    
+                                                    System.out.println("\n\t1 - Depositar\n\t2 - Sacar\n\t3 - Transferir\n\t4 - Voltar para MENU PRINCIPAL");
+                                                    
+                                                    System.out.println();
+                                                    
+                                                    System.out.print("Informe sua opção aqui: ");
+                                                    opN4 = scanner.nextInt();
+    
+                                                }
+    
+                                                System.out.println();
+    
+                                                if (opN4 == 1) {
+
+                                                    System.out.println("\nDEPÓSITO\n");
+
+                                                    System.out.println();
+                                                    
+                                                    System.out.print("Digite o valor do depósito: ");
+                                                    deposito = scanner.nextDouble();
+    
+                                                    System.out.println();
+
+                                                    System.out.println("Depósito realizado: " + iterable_element.depositar(deposito));
+
+                                                }
+
+                                                else if (opN4 == 2) {
+
+                                                    System.out.println("\nSAQUE\n");
+
+                                                    System.out.println();
+                                                    
+                                                    System.out.print("Digite o valor do saque: ");
+                                                    saque = scanner.nextDouble();
+
+                                                    if (saque > iterable_element.getSaldo()) {
+
+                                                        while (true) {
+                                                            
+                                                            System.out.println("\nValor informado superior ao Saldo da Conta!\n");
+    
+                                                            System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
+
+                                                            System.out.println("\n");
+
+                                                            System.out.println("Opções:");
+
+                                                            System.out.println("\n\t1 - Informar um Valor igual ou inferior\n\t2 - Usar Cheque Especial\n\t3 - Voltar para OPERAÇÕES");
+
+                                                            System.out.println();
+
+                                                            System.out.print("Informe sua opção aqui: ");
+                                                            opN5 = scanner.nextInt();
+
+                                                            while (opN5 < 1 || opN5 > 3) {
+
+                                                                System.out.println("\nOpção Inválida!\n");
+
+                                                                System.out.println();
+
+                                                                System.out.println("Opções:");
+
+                                                                System.out.println("\n\t1 - Informar um Valor igual ou inferior\n\t2 - Usar Cheque Especial\n\t3 - Voltar para OPERAÇÕES");
+
+                                                                System.out.print("Informe sua opção aqui: ");
+                                                                opN5 = scanner.nextInt();
+                                                                
+                                                            }
+
+                                                            System.out.println();
+
+                                                            if (opN5 == 1) {
+
+                                                                System.out.println();
+                                                                
+                                                                System.out.print("Digite o Valor do saque: ");
+                                                                saque = scanner.nextDouble();
+
+                                                                while (saque > iterable_element.getSaldo()) {
+                                                                    
+                                                                    System.out.println("\nInforme um Valor igual ou inferior ao Saldo da Conta!\n");
+
+                                                                    System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
+
+                                                                    System.out.println("\n");
+
+                                                                    System.out.print("Digite o Valor do saque: ");
+                                                                    saque = scanner.nextDouble();
+
+                                                                }
+
+                                                                System.out.println();
+
+                                                                System.out.println("Saque: " + iterable_element.sacar(saque));
+
+                                                                break;
+
+                                                            }
+
+                                                            else if (opN5 == 2) {
+
+                                                                System.out.println();
+
+                                                                System.out.println("Valor do Cheque Especial: " + iterable_element.getChequeEspecial());
+
+                                                                System.out.println();
+
+                                                                System.out.print("Digite o Valor do saque: ");
+                                                                saque = scanner.nextDouble();
+
+                                                                while ((saque - iterable_element.getSaldo()) > iterable_element.getChequeEspecial()) {
+                                                                    
+                                                                    System.out.println("\nSaque informado utrapassou o valor do Cheque Especial!\n");
+
+                                                                    System.out.println();
+
+                                                                    System.out.print("Digite o Valor do saque: ");
+                                                                    saque = scanner.nextDouble();
+
+                                                                }
+
+                                                                System.out.println();
+
+                                                                System.out.println("Saque: " + iterable_element.sacar(saque));
+                                                                
+                                                                iterable_element.setChequeEspecial(saque - iterable_element.getSaldo());
+
+                                                                break;
+
+                                                            }
+
+                                                            else {
+                                                                break;
+                                                            }
+
+                                                        }
+
+                                                    }
+
+                                                    else {
+                                                        System.out.println("\nSaque: " + iterable_element.sacar(saque));
+                                                    }
+
+                                                }
+
+                                                else if (opN4 == 3) {
+
+                                                    while (true) {
+                                                        
+                                                        System.out.println("\nTRANFERÊNCIA\n");
+    
+                                                        System.out.println();
+    
+                                                        System.out.println("Opções:");
+    
+                                                        System.out.println("\n\t1 - Conta Corrente\n\t2 - Conta Poupança\n\t3 - Voltar para OPERAÇÕES");
+    
+                                                        System.out.println();
+    
+                                                        System.out.print("Informe sua opção aqui: ");
+                                                        opN5 = scanner.nextInt();
+    
+                                                        while (opN5 < 1 || opN5 > 3) {
+    
+                                                            System.out.println("\nOpção Inválida!\n");
+    
+                                                            System.out.println();
+    
+                                                            System.out.println("Opções:");
+    
+                                                            System.out.println("\n\t1 - Conta Corrente\n\t2 - Conta Poupança\n\t3 - Voltar para OPERAÇÕES");
         
+                                                            System.out.println();
+        
+                                                            System.out.print("Informe sua opção aqui: ");
+                                                            opN5 = scanner.nextInt();
+                                                            
+                                                        }
+    
+                                                        System.out.println();
+
+                                                        if (opN5 == 1) {
+
+                                                            if (contaCorrentes.size() > 1) {
+                                                                
+                                                                System.out.println("\nPara qual Conta deseja Transferir?\n");
+                                                                
+                                                                for (ContaCorrente iterable_element2 : contaCorrentes) {
+    
+                                                                    if (iterable_element.getNumeroConta() != iterable_element2.getNumeroConta()) {
+        
+                                                                        System.out.println("\n\tDestinatário(a): " + iterable_element2.getCliente().getNome());
+        
+                                                                        System.out.println();
+        
+                                                                        System.out.println("\tNúmero da Agência: " + iterable_element2.getNumeroAgencia());
+                                                                        System.out.println("\tNúmero da Conta: " + iterable_element2.getNumeroConta());
+    
+                                                                    }
+                                                                                       
+                                                                }
+    
+                                                                System.out.println("\n");
+    
+                                                                System.out.print("Digite o Número da Agência: ");
+                                                                numeroAgencia = scanner.nextInt();
+    
+                                                                System.out.print("Digite o Número da Conta: ");
+                                                                numeroConta = scanner.nextInt();
+    
+                                                                while (numeroAgenciaList.contains(numeroAgencia) == false || numeroContaList.contains(numeroConta) == false) {
+                                                                    
+                                                                    System.out.println("\nConta não Encontrada!\n");
+    
+                                                                    System.out.println();
+    
+                                                                    System.out.print("Digite o Número da Agência: ");
+                                                                    numeroAgencia = scanner.nextInt();
+        
+                                                                    System.out.print("Digite o Número da Conta: ");
+                                                                    numeroConta = scanner.nextInt();
+    
+                                                                }
+    
+                                                                System.out.println();
+    
+                                                                System.out.print("Digite o valor da transferência: ");
+                                                                transferencia = scanner.nextDouble();
+
+                                                                if (cont < 3) {
+                                                                    
+                                                                    while (transferencia > iterable_element.getSaldo() ) {
+                                                                        
+                                                                        System.out.println("\nValor da Transferência superior a Saldo da Conta!\n");
+        
+                                                                        System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
+        
+                                                                        System.out.println();
+        
+                                                                        System.out.print("Digite o valor da transferência: ");
+                                                                        transferencia = scanner.nextDouble();
+        
+                                                                    }
+        
+                                                                    System.out.println();
+        
+                                                                    for (ContaCorrente iterable_element2 : contaCorrentes) {
+        
+                                                                        if (numeroAgencia == iterable_element2.getNumeroAgencia() && numeroConta == iterable_element2.getNumeroConta()) {
+                                                                            iterable_element.transferir(transferencia, iterable_element2);
+                                                                        }
+                                                                        
+                                                                    }
+
+                                                                }
+
+                                                                else {
+
+                                                                    while ((transferencia + (transferencia * taxa))  > iterable_element.getSaldo() ) {
+                                                                        
+                                                                        System.out.println("\nValor da Transferência superior a Saldo da Conta!\n");
+        
+                                                                        System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
+        
+                                                                        System.out.println();
+        
+                                                                        System.out.print("Digite o valor da transferência: ");
+                                                                        transferencia = scanner.nextDouble();
+        
+                                                                    }
+        
+                                                                    System.out.println();
+        
+                                                                    for (ContaCorrente iterable_element2 : contaCorrentes) {
+        
+                                                                        if (numeroAgencia == iterable_element2.getNumeroAgencia() && numeroConta == iterable_element2.getNumeroConta()) {
+                                                                            iterable_element.sacar(transferencia * taxa);
+                                                                            iterable_element.transferir(transferencia, iterable_element2);
+                                                                        }
+                                                                        
+                                                                    }
+                                                                }
+    
+    
+                                                                cont ++;
+                                                                
+                                                            }
+
+                                                            else {
+                                                                System.out.println("\nNenhuma Conta Corrente a mais Cadastrada no Sistema!\n");
+                                                            }
+                                                            
+                                                        }
+
+                                                        else if (opN5 == 2) {
+
+                                                            if (contaPoupancas.size() > 0) {
+                                                                
+                                                                System.out.println("\nPara qual Conta deseja Transferir?\n");
+                                                                
+                                                                for (ContaPoupanca iterable_element2 : contaPoupancas) {
+    
+                                                                    if (iterable_element.getNumeroConta() != iterable_element2.getNumeroConta()) {
+        
+                                                                        System.out.println("\n\tDestinatário(a): " + iterable_element2.getCliente().getNome());
+        
+                                                                        System.out.println();
+        
+                                                                        System.out.println("\tNúmero da Agência: " + iterable_element2.getNumeroAgencia());
+                                                                        System.out.println("\tNúmero da Conta: " + iterable_element2.getNumeroConta());
+    
+                                                                    }
+                                                                                       
+                                                                }
+    
+                                                                System.out.println("\n");
+    
+                                                                System.out.print("Digite o Número da Agência: ");
+                                                                numeroAgencia = scanner.nextInt();
+    
+                                                                System.out.print("Digite o Número da Conta: ");
+                                                                numeroConta = scanner.nextInt();
+    
+                                                                while (numeroAgenciaList.contains(numeroAgencia) == false || numeroContaList.contains(numeroConta) == false) {
+                                                                    
+                                                                    System.out.println("\nConta não Encontrada!\n");
+    
+                                                                    System.out.println();
+    
+                                                                    System.out.print("Digite o Número da Agência: ");
+                                                                    numeroAgencia = scanner.nextInt();
+        
+                                                                    System.out.print("Digite o Número da Conta: ");
+                                                                    numeroConta = scanner.nextInt();
+    
+                                                                }
+    
+                                                                System.out.println();
+    
+                                                                System.out.print("Digite o valor da transferência: ");
+                                                                transferencia = scanner.nextDouble();
+
+                                                                if (cont < 3) {
+                                                                    
+                                                                    while (transferencia > iterable_element.getSaldo() ) {
+                                                                        
+                                                                        System.out.println("\nValor da Transferência superior a Saldo da Conta!\n");
+        
+                                                                        System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
+        
+                                                                        System.out.println();
+        
+                                                                        System.out.print("Digite o valor da transferência: ");
+                                                                        transferencia = scanner.nextDouble();
+        
+                                                                    }
+        
+                                                                    System.out.println();
+        
+                                                                    for (ContaPoupanca iterable_element2 : contaPoupancas) {
+        
+                                                                        if (numeroAgencia == iterable_element2.getNumeroAgencia() && numeroConta == iterable_element2.getNumeroConta()) {
+                                                                            iterable_element.transferir(transferencia, iterable_element2);
+                                                                            iterable_element2.setRendimento(iterable_element2.getSaldo() * 0.10);
+                                                                        }
+
+                                                                        else {
+                                                                            System.out.println("\nNúmero da Agência ou Número da Conta!\n");
+                                                                        }
+                                                                        
+                                                                    }
+                                                                }
+
+                                                                else {
+
+                                                                    while ((transferencia + (transferencia * taxa)) > iterable_element.getSaldo() ) {
+                                                                        
+                                                                        System.out.println("\nValor da Transferência superior a Saldo da Conta!\n");
+        
+                                                                        System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
+        
+                                                                        System.out.println();
+        
+                                                                        System.out.print("Digite o valor da transferência: ");
+                                                                        transferencia = scanner.nextDouble();
+        
+                                                                    }
+        
+                                                                    System.out.println();
+        
+                                                                    for (ContaPoupanca iterable_element2 : contaPoupancas) {
+        
+                                                                        if (numeroAgencia == iterable_element2.getNumeroAgencia() && numeroConta == iterable_element2.getNumeroConta()) {
+                                                                            iterable_element.sacar(transferencia * taxa);
+                                                                            iterable_element.transferir(transferencia, iterable_element2);
+                                                                            iterable_element2.setRendimento(iterable_element2.getSaldo() * 0.10);
+                                                                        }
+                                                                        
+                                                                    }
+
+                                                                }
+    
+                                                                cont ++;
+
+                                                            }
+
+                                                            else {
+                                                                System.out.println("\nNenhuma Conta Poupança Cadastrada no Sistema!\n");
+                                                            }
+                                                            
+                                                        }
+
+                                                        else {
+                                                            break;
+                                                        }
+
+                                                    }
+                                                    
+                                                }
+
+                                                else {
+                                                    break;
+                                                }
+
+                                                System.out.println();
+
+                                            }
+
+                                        }
+        
+                                        else {
+                                            cont = 1;
+                                            break;
+                                        }
+    
+                                        System.out.println();
+    
+                                    }
+                                
+                                }
+
+                                else {
+                                    System.out.println("\nNenhuma Conta Corrente Cadastrada com esse CPF!\n");
+                                }
+    
+                            }
+    
+                        }
+
+                        //ACESSO A CONTA POUPANÇA
+    
+                        else if (opN2 == 2) {
+        
+                            for (ContaPoupanca iterable_element : contaPoupancas) {
+        
+                                if (cpf.equals(iterable_element.getCliente().getCpf())) {
+
+                                    //MENU PRINCIPAL
+        
+                                    while (true) {
+        
+                                        System.out.println("\nMENU PRINCIPAL DA CONTA POUPANÇA\n");
+                        
+                                        System.out.println();
+                                        
+                                        System.out.println("Proprietário(a): " + iterable_element.getCliente().getNome());
+                        
+                                        System.out.println();
+                                        
+                                        System.out.println("Número Agência: " + iterable_element.getNumeroAgencia());
+                                        System.out.println("Número Conta: " + iterable_element.getNumeroConta());
+                                        System.out.println("Saldo: " + iterable_element.getSaldo());
+                        
+                                        System.out.println();
+                        
+                                        System.out.println("Opções:");
+                        
+                                        System.out.println("\n\t1 - Acessar Dados\n\t2 - Operações\n\t3 - Sair da Conta");
+                        
+                                        System.out.println();
+                        
+                                        System.out.print("Infome sua opção aqui: ");
+                                        opN3 = scanner.nextInt();
+                        
+                                        while (opN3 < 1 || opN3 > 3) {
+                        
+                                            System.out.println("\nOpção Inválida!\n");
+        
+                                            System.out.println();
+                        
+                                            System.out.println("Opções:");
+                        
+                                            System.out.println("\n\t1 - Acessar Dados\n\t2 - Operações\n\t3 - Sair da Conta");
+                        
+                                            System.out.println();
+                        
+                                            System.out.print("Infome sua opção aqui: ");
+                                            opN3 = scanner.nextInt();
+        
+                                        }
+                                        
+                                        System.out.println();
+        
+                                        if (opN3 == 1) {
+        
+                                            while (true) {
+        
+                                                System.out.println("DADOS DA CONTA");
+        
+                                                System.out.println();
+                                                
+                                                System.out.println("Opções:");
+                                
+                                                System.out.println("\n\t1 - Número da Agência\n\t2 - Número da Conta\n\t3 - Saldo\n\t4 - Cliente\n\t5 - Rendimento\n\t6 - Recebimento de Notificação\n\t7 - Voltar para MENU PRINCIPAL");
+                                
+                                                System.out.println();
+                                
+                                                System.out.print("Informe sua opção aqui: ");
+                                                opN4 = scanner.nextInt();
+                                
+                                                while (opN4 < 1 || opN4 > 7) {
+                                
+                                                    System.out.println("\nOpção Inválida!\n");
+                                
+                                                    System.out.println("DADOS DA CONTA:");
+                                
+                                                    System.out.println("\n\t1 - Número da Agência\n\t2 - Número da Conta\n\t3 - Saldo\n\t4 - Cliente\n\t5 - Rendimento\n\t6 - Recebimento de Notificação\n\t7 - Voltar para MENU PRINCIPAL");
+                                                    
+                                                    System.out.println();
+                                
+                                                    System.out.print("Informe sua opção aqui: ");
+                                                    opN4 = scanner.nextInt();
+                                
+                                                }
+                                                
+                                                System.out.println("\n");
+                                                
+                                                if (opN4 == 1) {
+                                                    System.out.println("--> Número da Agência: " + iterable_element.getNumeroAgencia());
+                                                }
+                                
+                                                else if (opN4 == 2) {
+                                                    System.out.println("--> Número da Conta: " + iterable_element.getNumeroConta());
+                                                }
+                                
+                                                else if (opN4 == 3) {
+                                                    System.out.println("--> Saldo: " + iterable_element.getSaldo());
+                                                }
+        
+                                                else if (opN4 == 4) {
+                                
+                                                    while (true) {
+                                                        
+                                                        System.out.println("DADOS DO CLIENTE:");
+        
+                                                        System.out.println();
+        
+                                                        System.out.println("Opções:");
+                                
+                                                        System.out.println("\n\t1 - CPF\n\t2 - Nome\n\t3 - Data de Nascimento\n\t4 - Endereço\n\t5 - Voltar para DADOS DA CONTA");
+                                
+                                                        System.out.println();
+                                
+                                                        System.out.print("Informe sua opção aqui: ");
+                                                        opN5 = scanner.nextInt();
+                                
+                                                        while (opN5 < 1 || opN5 > 5) {
+                                
+                                                            System.out.println("\nOpção Inválida!\n");
+        
+                                                            System.out.println();
+                                
+                                                            System.out.println("Opcões:");
+                                
+                                                            System.out.println("\n\t1 - CPF\n\t2 - Nome\n\t3 - Data de Nascimento\n\t4 - Endereço\n\t5 - Voltar para DADOS DA CONTA");
+                                
+                                                            System.out.println();
+                                
+                                                            System.out.print("Informe sua opção aqui: ");
+                                                            opN5 = scanner.nextInt();
+                                
+                                                        }
+                                
+                                                        System.out.println("\n");
+        
+                                                        if (opN5 == 1) {
+                                                            System.out.println("--> CPF: " + iterable_element.getCliente().getCpf());
+                                                        }
+                                        
+                                                        else if (opN5 == 2) {
+                                                            System.out.println("--> Nome: " + iterable_element.getCliente().getNome());
+                                                        }
+                                        
+                                                        else if (opN5 == 3) {
+                                                            System.out.println("--> Data de Nascimento: " + iterable_element.getCliente().getDataNascimento());
+                                                        }
+        
+                                                        else if (opN5 == 4) {
+                                        
+                                                            while (true) {
+                                                                          
+                                                                System.out.println("DADOS DO ENDEREÇO:");
+                                        
+                                                                System.out.println();
+                                        
+                                                                System.out.println("Opções:");
+                                        
+                                                                System.out.println("\n\t1 - Rua\n\t2 - Número\n\t3 - Bairro\n\t4 - Cidade\n\t5 - Unidade Federativa\n\t6 - Voltar para DADOS CLIENTE");
+                                        
+                                                                System.out.println();
+                                        
+                                                                System.out.print("Informe sua opção aqui: ");
+                                                                opN6 = scanner.nextInt();
+                                        
+                                                                while (opN6 < 1 || opN6 > 6) {
+                                        
+                                                                    System.out.println("\nOpção Inválida!\n");
+                                        
+                                                                    System.out.println();
+                                        
+                                                                    System.out.println("Opções:");
+                                        
+                                                                    System.out.println("\n\t1 - Rua\n\t2 - Número\n\t3 - Bairro\n\t4 - Cidade\n\t5 - Unidade Federativa\n\t6 - Voltar para DADOS CLIENTE");
+                                        
+                                                                    System.out.println();
+                                        
+                                                                    System.out.print("Informe sua opção aqui: ");
+                                                                    opN6 = scanner.nextInt();
+                                                                    
+                                                                }
+                                        
+                                                                System.out.println("\n");
+                                        
+                                                                if (opN6 == 1) {
+                                                                    System.out.println("--> Rua: " +iterable_element.getCliente().getEndereco().getLogradouro());
+                                                                }
+                                        
+                                                                else if (opN6 == 2) {
+                                                                    System.out.println("--> Número: " +iterable_element.getCliente().getEndereco().getNumero());
+                                                                }
+                                        
+                                                                else if (opN6 == 3) {
+                                                                    System.out.println("--> Bairro: " +iterable_element.getCliente().getEndereco().getBairro());
+                                                                }
+                                        
+                                                                else if (opN6 == 4) {
+                                                                    System.out.println("--> Cidade: " +iterable_element.getCliente().getEndereco().getCidade());
+                                                                }
+                                        
+                                                                else if (opN6 == 5) {
+                                                                    System.out.println("--> Unidade Federativa: " +iterable_element.getCliente().getEndereco().getUf());
+                                                                }
+                                        
+                                                                else {
+                                                                    break;
+                                                                }
+    
+                                                                System.out.println();
+                                           
+                                                            }
+                                        
+                                                        }
+        
+                                                        else {
+                                                            break;
+                                                        }
+    
+                                                        System.out.println();
+        
+                                                    }
+    
+                                                }
+        
+                                                else if (opN4 == 5) {
+                                                    System.out.println("--> Rendimento: " + iterable_element.getRendimento());
+                                                }
+        
+                                                else if (opN4 == 6) {
+                                                    System.out.println("--> Recebimento de Notificações: " + iterable_element.getNotificacao());
+                                                }
+        
+                                                else {
+                                                    break;
+                                                }
+    
+                                                System.out.println();
+                                            
+                                            }
+    
+                                        }
+        
+                                        else if (opN3 == 2) {
+
+                                            while (true) {
+
+                                                System.out.println("\nOPERAÇÕES\n");
+    
+                                                System.out.println();
+    
+                                                System.out.println("Opções:");
+    
+                                                System.out.println("\n\t1 - Transferir\n\t2 - Voltar para MENU PRINCIPAL");
+    
+                                                System.out.println();
+    
+                                                System.out.print("Informe sua opção aqui: ");
+                                                opN4 = scanner.nextInt();
+    
+                                                while (opN4 < 1 || opN4 > 2) {
+    
+                                                    System.out.println("\nOpção Inválida!\n");
+    
+                                                    System.out.println();
+                                                    
+                                                    System.out.println("Opções:");
+                                                    
+                                                    System.out.println("\n\t1 - Transferir\n\t2 - Voltar para MENU PRINCIPAL");
+                                                    
+                                                    System.out.println();
+                                                    
+                                                    System.out.print("Informe sua opção aqui: ");
+                                                    opN4 = scanner.nextInt();
+    
+                                                }
+    
+                                                System.out.println();
+
+                                                if (opN4 == 1) {                                             
+
+                                                    while (true) {
+                                                                
+                                                        System.out.println("\nTRANFERÊNCIA\n");
+        
+                                                        System.out.println();
+        
+                                                        System.out.println("Opções:");
+        
+                                                        System.out.println("\n\t1 - Conta Corrente\n\t2 - Conta Poupança\n\t3 - Voltar para OPERAÇÕES");
+        
+                                                        System.out.println();
+        
+                                                        System.out.print("Informe sua opção aqui: ");
+                                                        opN5 = scanner.nextInt();
+        
+                                                        while (opN5 < 1 || opN5 > 3) {
+        
+                                                            System.out.println("\nOpção Inválida!\n");
+        
+                                                            System.out.println();
+        
+                                                            System.out.println("Opções:");
+        
+                                                            System.out.println("\n\t1 - Conta Corrente\n\t2 - Conta Poupança\n\t3 - Voltar para OPERAÇÕES");
+        
+                                                            System.out.println();
+        
+                                                            System.out.print("Informe sua opção aqui: ");
+                                                            opN5 = scanner.nextInt();
+                                                            
+                                                        }
+        
+                                                        System.out.println();
+        
+                                                        if (opN5 == 1) {
+
+                                                            if (contaCorrentes.size() > 0) {
+                                                                
+                                                                System.out.println("\nPara qual Conta deseja Transferir?\n");
+                                                                
+                                                                for (ContaCorrente iterable_element2 : contaCorrentes) {
+        
+                                                                    if (iterable_element.getNumeroConta() != iterable_element2.getNumeroConta()) {
+        
+                                                                        System.out.println("\n\tDestinatário(a): " + iterable_element2.getCliente().getNome());
+        
+                                                                        System.out.println();
+        
+                                                                        System.out.println("\tNúmero da Agência: " + iterable_element2.getNumeroAgencia());
+                                                                        System.out.println("\tNúmero da Conta: " + iterable_element2.getNumeroConta());
+        
+                                                                    }
+                                                                                       
+                                                                }
+        
+                                                                System.out.println("\n");
+        
+                                                                System.out.print("Digite o Número da Agência: ");
+                                                                numeroAgencia = scanner.nextInt();
+        
+                                                                System.out.print("Digite o Número da Conta: ");
+                                                                numeroConta = scanner.nextInt();
+        
+                                                                while (numeroAgenciaList.contains(numeroAgencia) == false || numeroContaList.contains(numeroConta) == false) {
+                                                                    
+                                                                    System.out.println("\nConta não Encontrada!\n");
+        
+                                                                    System.out.println();
+        
+                                                                    System.out.print("Digite o Número da Agência: ");
+                                                                    numeroAgencia = scanner.nextInt();
+        
+                                                                    System.out.print("Digite o Número da Conta: ");
+                                                                    numeroConta = scanner.nextInt();
+        
+                                                                }
+        
+                                                                System.out.println();
+        
+                                                                System.out.print("Digite o valor da transferência: ");
+                                                                transferencia = scanner.nextDouble();
+        
+                                                                while ((transferencia + (transferencia * taxa))  > iterable_element.getSaldo()) {
+                                                                        
+                                                                    System.out.println("\nValor da Transferência superior a Saldo da Conta!\n");
+    
+                                                                    System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
+    
+                                                                    System.out.println();
+    
+                                                                    System.out.print("Digite o valor da transferência: ");
+                                                                    transferencia = scanner.nextDouble();
+    
+                                                                }
+    
+                                                                System.out.println();
+    
+                                                                for (ContaCorrente iterable_element2 : contaCorrentes) {
+    
+                                                                    if (numeroAgencia == iterable_element2.getNumeroAgencia() && numeroConta == iterable_element2.getNumeroConta()) {
+                                                                        iterable_element.sacar(transferencia * taxa);
+                                                                        iterable_element.setRendimento(iterable_element.getSaldo() * 0.10);
+                                                                        iterable_element.transferir(transferencia, iterable_element2);
+                                                                    }
+
+                                                                    else {
+                                                                        System.out.println("\nNúmero da Agência ou Número da Conta Incorreto(s)!\n");
+                                                                    }
+                                                                    
+                                                                }
+                                                                
+                                                            }
+        
+                                                            else {
+                                                                System.out.println("\nNenhuma Conta Poupança Cadastrada no Sistema!\n");
+                                                            }
+                                                            
+                                                        }
+        
+                                                        else if (opN5 == 2) {
+        
+                                                            if (contaPoupancas.size() > 1) {
+                                                                
+                                                                System.out.println("\nPara qual Conta deseja Transferir?\n");
+                                                                
+                                                                for (ContaPoupanca iterable_element2 : contaPoupancas) {
+        
+                                                                    if (iterable_element.getNumeroConta() != iterable_element2.getNumeroConta()) {
+        
+                                                                        System.out.println("\n\tDestinatário(a): " + iterable_element2.getCliente().getNome());
+        
+                                                                        System.out.println();
+        
+                                                                        System.out.println("\tNúmero da Agência: " + iterable_element2.getNumeroAgencia());
+                                                                        System.out.println("\tNúmero da Conta: " + iterable_element2.getNumeroConta());
+        
+                                                                    }
+                                                                                       
+                                                                }
+        
+                                                                System.out.println("\n");
+        
+                                                                System.out.print("Digite o Número da Agência: ");
+                                                                numeroAgencia = scanner.nextInt();
+        
+                                                                System.out.print("Digite o Número da Conta: ");
+                                                                numeroConta = scanner.nextInt();
+        
+                                                                while (numeroAgenciaList.contains(numeroAgencia) == false || numeroContaList.contains(numeroConta) == false) {
+                                                                    
+                                                                    System.out.println("\nConta não Encontrada!\n");
+        
+                                                                    System.out.println();
+        
+                                                                    System.out.print("Digite o Número da Agência: ");
+                                                                    numeroAgencia = scanner.nextInt();
+        
+                                                                    System.out.print("Digite o Número da Conta: ");
+                                                                    numeroConta = scanner.nextInt();
+        
+                                                                }
+        
+                                                                System.out.println();
+        
+                                                                System.out.print("Digite o valor da transferência: ");
+                                                                transferencia = scanner.nextDouble();
+        
+                                                                while ((transferencia + (transferencia * taxa)) > iterable_element.getSaldo() ) {
+                                                                        
+                                                                    System.out.println("\nValor da Transferência superior a Saldo da Conta!\n");
+    
+                                                                    System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
+    
+                                                                    System.out.println();
+    
+                                                                    System.out.print("Digite o valor da transferência: ");
+                                                                    transferencia = scanner.nextDouble();
+    
+                                                                }
+    
+                                                                System.out.println();
+    
+                                                                for (ContaPoupanca iterable_element2 : contaPoupancas) {
+    
+                                                                    if (numeroAgencia == iterable_element2.getNumeroAgencia() && numeroConta == iterable_element2.getNumeroConta()) {
+                                                                        iterable_element.sacar(transferencia * taxa);
+                                                                        iterable_element.transferir(transferencia, iterable_element2);
+                                                                        iterable_element.setRendimento(iterable_element.getSaldo() * 0.10);
+                                                                        iterable_element2.setRendimento(iterable_element2.getSaldo() * 0.10);
+                                                                    }
+
+                                                                }
+        
+                                                            }
+        
+                                                            else {
+                                                                System.out.println("\nNenhuma Conta Poupança a mais Cadastrada no Sistema!\n");
+                                                            }
+                                                            
+                                                        }
+        
+                                                        else {
+                                                            break;
+                                                        }
+        
+                                                    }
+
+                                                }
+
+                                                else {
+                                                    break;
+                                                }
+
+                                            }    
+                                            
                                         }
         
                                         else {
@@ -611,262 +1591,9 @@ public class App {
                                     }
                                 
                                 }
-    
-                            }
-    
-                        }
-    
-                        else if (opN2 == 2) {
-        
-                            for (ContaPoupanca iterable_element : contaPoupancas) {
-        
-                                if (cpf.equals(iterable_element.getCliente().getCpf())) {
-        
-                                    while (true) {
-        
-                                        System.out.println("MENU PRINCIPAL DA CONTA POUPANÇA");
-                        
-                                        System.out.println();
-                                        
-                                        System.out.println("Login: " + cpf);
-                        
-                                        System.out.println();
-                                        
-                                        System.out.println("Número Agência: " + iterable_element.getNumeroAgencia());
-                                        System.out.println("Número Conta: " + iterable_element.getNumeroConta());
-                                        System.out.println("Saldo: " + iterable_element.getSaldo());
-                                        System.out.println("Proprietário: " + iterable_element.getCliente().getNome());
-                        
-                                        System.out.println();
-                        
-                                        System.out.println("Opções:");
-                        
-                                        System.out.println("\n\t1 - Acessar Dados\n\t2 - Operações\n\t3 - Sair da Conta");
-                        
-                                        System.out.println();
-                        
-                                        System.out.print("Infome sua opção aqui: ");
-                                        opN2 = scanner.nextInt();
-                        
-                                        while (opN2 < 1 || opN2 > 3) {
-                        
-                                            System.out.println("\nOpção Inválida!\n");
-        
-                                            System.out.println();
-                        
-                                            System.out.println("Opções:");
-                        
-                                            System.out.println("\n\t1 - Acessar Dados\n\t2 - Operações\n\t3 - Sair da Conta");
-                        
-                                            System.out.println();
-                        
-                                            System.out.print("Infome sua opção aqui: ");
-                                            opN2 = scanner.nextInt();
-        
-                                        }
-                                        
-                                        System.out.println();
-        
-                                        if (opN2 == 1) {
-        
-                                            while (true) {
-        
-                                                System.out.println("DADOS DA CONTA");
-        
-                                                System.out.println();
-                                                
-                                                System.out.println("Opções:");
-                                
-                                                System.out.println("\n\t1 - Número da Agência\n\t2 - Número da Conta\n\t3 - Saldo\n\t4 - Cliente\n\t5 - Rendimento\n\t6 - Forma de envio de Notificação\n\t7 - Voltar para MENU PRINCIPAL");
-                                
-                                                System.out.println();
-                                
-                                                System.out.print("Informe sua opção aqui: ");
-                                                opN3 = scanner.nextInt();
-                                
-                                                while (opN3 < 1 || opN3 > 7) {
-                                
-                                                    System.out.println("\nOpção Inválida!\n");
-                                
-                                                    System.out.println("DADOS DA CONTA:");
-                                
-                                                    System.out.println("\n\t1 - Número da Agência\n\t2 - Número da Conta\n\t3 - Saldo\n\t4 - Cliente\n\t5 - Rendimento\n\t6 - Forma de envio de Notificação\n\t7 - Voltar para MENU PRINCIPAL");
-                                                    
-                                                    System.out.println();
-                                
-                                                    System.out.print("Informe sua opção aqui: ");
-                                                    opN3 = scanner.nextInt();
-                                
-                                                }
-                                                
-                                                System.out.println();
-                                                
-                                                if (opN3 == 1) {
-                                                    System.out.println("Número da Agência: " + iterable_element.getNumeroAgencia());
-                                                }
-                                
-                                                else if (opN3 == 2) {
-                                                    System.out.println("Número da Conta: " + iterable_element.getNumeroConta());
-                                                }
-                                
-                                                else if (opN3 == 3) {
-                                                    System.out.println("Saldo: " + iterable_element.getSaldo());
-                                                }
-        
-                                                else if (opN3 == 4) {
-                                
-                                                    while (true) {
-                                                        
-                                                        System.out.println("DADOS DO CLIENTE:");
-        
-                                                        System.out.println();
-        
-                                                        System.out.println("Opções:");
-                                
-                                                        System.out.println("\n\t1 - CPF\n\t2 - Nome\n\t3 - Data de Nascimento\n\t4 - Endereço\n\t5 - Voltar para DADOS DA CONTA");
-                                
-                                                        System.out.println();
-                                
-                                                        System.out.print("Informe sua opção aqui: ");
-                                                        opN4 = scanner.nextInt();
-                                
-                                                        while (opN4 < 1 || opN4 > 5) {
-                                
-                                                            System.out.println("\nOpção Inválida!\n");
-        
-                                                            System.out.println();
-                                
-                                                            System.out.println("Opcões:");
-                                
-                                                            System.out.println("\n\t1 - CPF\n\t2 - Nome\n\t3 - Data de Nascimento\n\t4 - Endereço\n\t5 - Voltar para DADOS DA CONTA");
-                                
-                                                            System.out.println();
-                                
-                                                            System.out.print("Informe sua opção aqui: ");
-                                                            opN4 = scanner.nextInt();
-                                
-                                                        }
-                                
-                                                        System.out.println();
-        
-                                                        if (opN4 == 1) {
-                                                            System.out.println("CPF: " + iterable_element.getCliente().getCpf());
-                                                        }
-                                        
-                                                        else if (opN4 == 2) {
-                                                            System.out.println("Nome: " + iterable_element.getCliente().getNome());
-                                                        }
-                                        
-                                                        else if (opN4 == 3) {
-                                                            System.out.println("Data de Nascimento: " + iterable_element.getCliente().getDataNascimento());
-                                                        }
-        
-                                                        else if (opN4 == 4) {
-                                        
-                                                            while (true) {
-                                                                          
-                                                                System.out.println("DADOS DO ENDEREÇO:");
-                                        
-                                                                System.out.println();
-                                        
-                                                                System.out.println("Opções:");
-                                        
-                                                                System.out.println("\n\t1 - Rua\n\t2 - Número\n\t3 - Bairro\n\t4 - Cidade\n\t5 - Unidade Federativa\n\t6 - Voltar para DADOS CLIENTE");
-                                        
-                                                                System.out.println();
-                                        
-                                                                System.out.print("Informe sua opção aqui: ");
-                                                                opN5 = scanner.nextInt();
-                                        
-                                                                while (opN5 < 1 || opN5 > 6) {
-                                        
-                                                                    System.out.println("\nOpção Inválida!\n");
-                                        
-                                                                    System.out.println();
-                                        
-                                                                    System.out.println("Opções:");
-                                        
-                                                                    System.out.println("\n\t1 - Rua\n\t2 - Número\n\t3 - Bairro\n\t4 - Cidade\n\t5 - Unidade Federativa\n\t6 - Voltar para DADOS CLIENTE");
-                                        
-                                                                    System.out.println();
-                                        
-                                                                    System.out.print("Informe sua opção aqui: ");
-                                                                    opN5 = scanner.nextInt();
-                                                                    
-                                                                }
-                                        
-                                                                System.out.println();
-                                        
-                                                                if (opN5 == 1) {
-                                                                    System.out.println("Rua: " +iterable_element.getCliente().getEndereco().getLogradouro());
-                                                                }
-                                        
-                                                                else if (opN5 == 2) {
-                                                                    System.out.println("Número: " +iterable_element.getCliente().getEndereco().getNumero());
-                                                                }
-                                        
-                                                                else if (opN5 == 3) {
-                                                                    System.out.println("Bairro: " +iterable_element.getCliente().getEndereco().getBairro());
-                                                                }
-                                        
-                                                                else if (opN5 == 4) {
-                                                                    System.out.println("Cidade: " +iterable_element.getCliente().getEndereco().getCidade());
-                                                                }
-                                        
-                                                                else if (opN5 == 5) {
-                                                                    System.out.println("Unidade Federativa: " +iterable_element.getCliente().getEndereco().getUf());
-                                                                }
-                                        
-                                                                else {
-                                                                    break;
-                                                                }
-    
-                                                                System.out.println();
-                                           
-                                                            }
-                                        
-                                                        }
-        
-                                                        else {
-                                                            break;
-                                                        }
-    
-                                                        System.out.println();
-        
-                                                    }
-    
-                                                }
-        
-                                                else if (opN3 == 5) {
-                                                    System.out.println("Rendimento: " + iterable_element.getRendimento());
-                                                }
-        
-                                                else if (opN3 == 6) {
-                                                    System.out.println("Forma de envio de Notificações: " + iterable_element.getNotificacao());
-                                                }
-        
-                                                else {
-                                                    break;
-                                                }
-    
-                                                System.out.println();
-                                            
-                                            }
-    
-                                        }
-        
-                                        else if (opN2 == 2) {
-        
-                                        }
-        
-                                        else {
-                                            break;
-                                        }
-    
-                                        System.out.println();
-    
-                                    }
-                                
+
+                                else {
+                                    System.out.println("\nNenhuma Conta Poupança Cadastrada com esse CPF!\n");
                                 }
     
                             }
@@ -878,8 +1605,6 @@ public class App {
                     else {
                         break;
                     }
-
-                    System.out.println();
 
                 }
     
