@@ -38,19 +38,22 @@ public abstract class Conta {
         return this.notificacao;
     }
 
-    public boolean deposita(double saldo) {
-        this.saldo += saldo;
+    public boolean depositar(double deposito) {
+        this.saldo += deposito;
+        this.enviaNotificacao("Depósito: ", deposito);
         return true;
     }
 
-    public double saca(double saldo) {
-        this.saldo -= saldo;
-        return saldo;
+    public double sacar(double saque) {
+        this.saldo -= saque;
+        this.enviaNotificacao("Saque: ", saque);
+        return saque;
     }
     
-    public void transfere(double saldo, Conta destinatario) {
-        this.saldo -= saldo;
-        destinatario.saldo += saldo;
+    public void transferir(double transferencia, Conta destinatario) {
+        this.sacar(transferencia);
+        destinatario.depositar(transferencia);
+        this.enviaNotificacao("Tranferência: ", transferencia);
     }
 
     public void enviaNotificacao(String operacao, double valor) {
