@@ -180,7 +180,7 @@ public class App {
                         dataNascimento = LocalDate.of(Integer.parseInt(dtVetor[2]), 
                                                       Integer.parseInt(dtVetor[1]), 
                                                       Integer.parseInt(dtVetor[0]));
-        
+
                         System.out.println();
         
                         System.out.println("\nDADOS COMPLEMENTARES\n");
@@ -759,9 +759,10 @@ public class App {
 
                                                                 System.out.println();
 
+                                                                iterable_element.setChequeEspecial((saque - iterable_element.getSaldo()));
+
                                                                 System.out.println("Saque: " + iterable_element.sacar(saque));
                                                                 
-                                                                iterable_element.setChequeEspecial(saque - iterable_element.getSaldo());
 
                                                                 break;
 
@@ -896,7 +897,7 @@ public class App {
 
                                                                     while ((transferencia + (transferencia * taxa))  > iterable_element.getSaldo() ) {
                                                                         
-                                                                        System.out.println("\nValor da Transferência superior a Saldo da Conta!\n");
+                                                                        System.out.println("\nValor da Transferência superior a Saldo da Conta!, pois há uma taxa de 5%!\n");
         
                                                                         System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
         
@@ -1449,7 +1450,7 @@ public class App {
         
                                                                 while ((transferencia + (transferencia * taxa))  > iterable_element.getSaldo()) {
                                                                         
-                                                                    System.out.println("\nValor da Transferência superior a Saldo da Conta!\n");
+                                                                    System.out.println("\nValor da Transferência superior a Saldo da Conta, pois há uma taxa de 5%!\n");
     
                                                                     System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
     
@@ -1534,7 +1535,7 @@ public class App {
         
                                                                 while ((transferencia + (transferencia * taxa)) > iterable_element.getSaldo() ) {
                                                                         
-                                                                    System.out.println("\nValor da Transferência superior a Saldo da Conta!\n");
+                                                                    System.out.println("\nValor da Transferência superior a Saldo da Conta, pois há uma taxa de 5%!\n");
     
                                                                     System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
     
