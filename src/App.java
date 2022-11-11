@@ -1338,14 +1338,14 @@ public class App {
     
                                                 System.out.println("Opções:");
     
-                                                System.out.println("\n\t1 - Transferir\n\t2 - Voltar para MENU PRINCIPAL");
+                                                System.out.println("\n\t1 - Depositar\n\t2 - Sacar\n\t3 - Transferir\n\t4 - Voltar para MENU PRINCIPAL");
     
                                                 System.out.println();
     
                                                 System.out.print("Informe sua opção aqui: ");
                                                 opN4 = scanner.nextInt();
     
-                                                while (opN4 < 1 || opN4 > 2) {
+                                                while (opN4 < 1 || opN4 > 4) {
     
                                                     System.out.println("\nOpção Inválida!\n");
     
@@ -1353,7 +1353,7 @@ public class App {
                                                     
                                                     System.out.println("Opções:");
                                                     
-                                                    System.out.println("\n\t1 - Transferir\n\t2 - Voltar para MENU PRINCIPAL");
+                                                    System.out.println("\n\t1 - Depositar\n\t2 - Sacar\n\t3 - Transferir\n\t4 - Voltar para MENU PRINCIPAL");
                                                     
                                                     System.out.println();
                                                     
@@ -1365,212 +1365,240 @@ public class App {
                                                 System.out.println();
 
                                                 if (opN4 == 1) {                                             
+                                                                                        
+                                                    System.out.println("\nDEPÓSITO\n");
+                                                    System.out.print("Digite o valor do depósito: ");
+                                                    deposito = scanner.nextDouble();
+                                                    iterable_element.depositar(deposito);
+                                                    iterable_element.setRendimento(iterable_element.getSaldo() * 0.10);
 
-                                                    while (true) {
-                                                                
-                                                        System.out.println("\nTRANFERÊNCIA\n");
-        
+                                                }
+                                                    
+                                                else if (opN4 == 2) {
+                                                        
+                                                    System.out.println("\nSAQUE\n");
+    
+                                                    System.out.print("Digite o valor do saque: ");
+                                                    saque = scanner.nextDouble();
+
+                                                    while (saque > iterable_element.getSaldo()) {
+                                                        System.out.println("\nSaque superior que Saldo da Conta!\n");
+                                                        System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
+                                                        System.out.print("Digite o valor do saque: ");
+                                                        saque = scanner.nextDouble();
+                                                    }
+                                                        
+                                                    System.out.println();
+
+                                                    iterable_element.sacar(saque);
+    
+                                                    iterable_element.setRendimento(iterable_element.getSaldo() * 0.10);
+    
+                                                    System.out.println("Saque: " + iterable_element.getSaldo());
+    
+                                                }
+
+                                                else if (opN4 == 3) {
+                                                    
+                                                    System.out.println("\nTRANFERÊNCIA\n");
+                                                    
+                                                    System.out.println();
+    
+                                                    System.out.println("Opções:");
+    
+                                                    System.out.println("\n\t1 - Conta Corrente\n\t2 - Conta Poupança\n\t3 - Voltar para OPERAÇÕES");
+    
+                                                    System.out.println();
+    
+                                                    System.out.print("Informe sua opção aqui: ");
+                                                    opN5 = scanner.nextInt();
+
+                                                    while (opN5 < 1 || opN5 > 3) {
+    
+                                                        System.out.println("\nOpção Inválida!\n");
+    
                                                         System.out.println();
-        
+    
                                                         System.out.println("Opções:");
-        
+    
                                                         System.out.println("\n\t1 - Conta Corrente\n\t2 - Conta Poupança\n\t3 - Voltar para OPERAÇÕES");
-        
+    
                                                         System.out.println();
-        
+    
                                                         System.out.print("Informe sua opção aqui: ");
                                                         opN5 = scanner.nextInt();
+                                                        
+                                                    }
         
-                                                        while (opN5 < 1 || opN5 > 3) {
-        
-                                                            System.out.println("\nOpção Inválida!\n");
-        
-                                                            System.out.println();
-        
-                                                            System.out.println("Opções:");
-        
-                                                            System.out.println("\n\t1 - Conta Corrente\n\t2 - Conta Poupança\n\t3 - Voltar para OPERAÇÕES");
-        
-                                                            System.out.println();
-        
-                                                            System.out.print("Informe sua opção aqui: ");
-                                                            opN5 = scanner.nextInt();
-                                                            
-                                                        }
-        
-                                                        System.out.println();
-        
-                                                        if (opN5 == 1) {
+                                                    if (opN5 == 1) {
 
-                                                            if (contaCorrentes.size() > 0) {
-                                                                
-                                                                System.out.println("\nPara qual Conta deseja Transferir?\n");
-                                                                
-                                                                for (ContaCorrente iterable_element2 : contaCorrentes) {
-        
-                                                                    if (iterable_element.getNumeroConta() != iterable_element2.getNumeroConta()) {
-        
-                                                                        System.out.println("\n\tDestinatário(a): " + iterable_element2.getCliente().getNome());
-        
-                                                                        System.out.println();
-        
-                                                                        System.out.println("\tNúmero da Agência: " + iterable_element2.getNumeroAgencia());
-                                                                        System.out.println("\tNúmero da Conta: " + iterable_element2.getNumeroConta());
-        
-                                                                    }
-                                                                                       
+                                                        if (contaCorrentes.size() > 0) {
+                                                            
+                                                            System.out.println("\nPara qual Conta deseja Transferir?\n");
+                                                            
+                                                            for (ContaCorrente iterable_element2 : contaCorrentes) {
+    
+                                                                if (iterable_element.getNumeroConta() != iterable_element2.getNumeroConta()) {
+    
+                                                                    System.out.println("\n\tDestinatário(a): " + iterable_element2.getCliente().getNome());
+    
+                                                                    System.out.println();
+    
+                                                                    System.out.println("\tNúmero da Agência: " + iterable_element2.getNumeroAgencia());
+                                                                    System.out.println("\tNúmero da Conta: " + iterable_element2.getNumeroConta());
+    
                                                                 }
-        
-                                                                System.out.println("\n");
-        
+                                                                                   
+                                                            }
+    
+                                                            System.out.println("\n");
+    
+                                                            System.out.print("Digite o Número da Agência: ");
+                                                            numeroAgencia = scanner.nextInt();
+    
+                                                            System.out.print("Digite o Número da Conta: ");
+                                                            numeroConta = scanner.nextInt();
+    
+                                                            while (numeroAgenciaList.contains(numeroAgencia) == false || numeroContaList.contains(numeroConta) == false) {
+                                                                
+                                                                System.out.println("\nConta não Encontrada!\n");
+    
+                                                                System.out.println();
+    
                                                                 System.out.print("Digite o Número da Agência: ");
                                                                 numeroAgencia = scanner.nextInt();
-        
+    
                                                                 System.out.print("Digite o Número da Conta: ");
                                                                 numeroConta = scanner.nextInt();
-        
-                                                                while (numeroAgenciaList.contains(numeroAgencia) == false || numeroContaList.contains(numeroConta) == false) {
+    
+                                                            }
+    
+                                                            System.out.println();
+    
+                                                            System.out.print("Digite o valor da transferência: ");
+                                                            transferencia = scanner.nextDouble();
+    
+                                                            while ((transferencia + (transferencia * taxa))  > iterable_element.getSaldo()) {
                                                                     
-                                                                    System.out.println("\nConta não Encontrada!\n");
-        
-                                                                    System.out.println();
-        
-                                                                    System.out.print("Digite o Número da Agência: ");
-                                                                    numeroAgencia = scanner.nextInt();
-        
-                                                                    System.out.print("Digite o Número da Conta: ");
-                                                                    numeroConta = scanner.nextInt();
-        
-                                                                }
-        
+                                                                System.out.println("\nValor da Transferência superior a Saldo da Conta, pois há uma taxa de 5%!\n");
+
+                                                                System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
+
                                                                 System.out.println();
-        
+
                                                                 System.out.print("Digite o valor da transferência: ");
                                                                 transferencia = scanner.nextDouble();
-        
-                                                                while ((transferencia + (transferencia * taxa))  > iterable_element.getSaldo()) {
-                                                                        
-                                                                    System.out.println("\nValor da Transferência superior a Saldo da Conta, pois há uma taxa de 5%!\n");
-    
-                                                                    System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
-    
-                                                                    System.out.println();
-    
-                                                                    System.out.print("Digite o valor da transferência: ");
-                                                                    transferencia = scanner.nextDouble();
-    
-                                                                }
-    
-                                                                System.out.println();
-    
-                                                                for (ContaCorrente iterable_element2 : contaCorrentes) {
-    
-                                                                    if (numeroAgencia == iterable_element2.getNumeroAgencia() && numeroConta == iterable_element2.getNumeroConta()) {
-                                                                        iterable_element.sacar(transferencia * taxa);
-                                                                        iterable_element.setRendimento(iterable_element.getSaldo() * 0.10);
-                                                                        iterable_element.transferir(transferencia, iterable_element2);
-                                                                    }
 
-                                                                    else {
-                                                                        System.out.println("\nNúmero da Agência ou Número da Conta Incorreto(s)!\n");
-                                                                    }
-                                                                    
+                                                            }
+
+                                                            System.out.println();
+
+                                                            for (ContaCorrente iterable_element2 : contaCorrentes) {
+
+                                                                if (numeroAgencia == iterable_element2.getNumeroAgencia() && numeroConta == iterable_element2.getNumeroConta()) {
+                                                                    iterable_element.sacar(transferencia * taxa);
+                                                                    iterable_element.transferir(transferencia, iterable_element2);
+                                                                    iterable_element.setRendimento(iterable_element.getSaldo() * 0.10);
+                                                                }
+
+                                                                else {
+                                                                    System.out.println("\nNúmero da Agência ou Número da Conta Incorreto(s)!\n");
                                                                 }
                                                                 
-                                                            }
-        
-                                                            else {
-                                                                System.out.println("\nNenhuma Conta Poupança Cadastrada no Sistema!\n");
                                                             }
                                                             
                                                         }
-        
-                                                        else if (opN5 == 2) {
-        
-                                                            if (contaPoupancas.size() > 1) {
-                                                                
-                                                                System.out.println("\nPara qual Conta deseja Transferir?\n");
-                                                                
-                                                                for (ContaPoupanca iterable_element2 : contaPoupancas) {
-        
-                                                                    if (iterable_element.getNumeroConta() != iterable_element2.getNumeroConta()) {
-        
-                                                                        System.out.println("\n\tDestinatário(a): " + iterable_element2.getCliente().getNome());
-        
-                                                                        System.out.println();
-        
-                                                                        System.out.println("\tNúmero da Agência: " + iterable_element2.getNumeroAgencia());
-                                                                        System.out.println("\tNúmero da Conta: " + iterable_element2.getNumeroConta());
-        
-                                                                    }
-                                                                                       
-                                                                }
-        
-                                                                System.out.println("\n");
-        
-                                                                System.out.print("Digite o Número da Agência: ");
-                                                                numeroAgencia = scanner.nextInt();
-        
-                                                                System.out.print("Digite o Número da Conta: ");
-                                                                numeroConta = scanner.nextInt();
-        
-                                                                while (numeroAgenciaList.contains(numeroAgencia) == false || numeroContaList.contains(numeroConta) == false) {
-                                                                    
-                                                                    System.out.println("\nConta não Encontrada!\n");
-        
-                                                                    System.out.println();
-        
-                                                                    System.out.print("Digite o Número da Agência: ");
-                                                                    numeroAgencia = scanner.nextInt();
-        
-                                                                    System.out.print("Digite o Número da Conta: ");
-                                                                    numeroConta = scanner.nextInt();
-        
-                                                                }
-        
-                                                                System.out.println();
-        
-                                                                System.out.print("Digite o valor da transferência: ");
-                                                                transferencia = scanner.nextDouble();
-        
-                                                                while ((transferencia + (transferencia * taxa)) > iterable_element.getSaldo() ) {
-                                                                        
-                                                                    System.out.println("\nValor da Transferência superior a Saldo da Conta, pois há uma taxa de 5%!\n");
     
-                                                                    System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
-    
-                                                                    System.out.println();
-    
-                                                                    System.out.print("Digite o valor da transferência: ");
-                                                                    transferencia = scanner.nextDouble();
-    
-                                                                }
-    
-                                                                System.out.println();
-    
-                                                                for (ContaPoupanca iterable_element2 : contaPoupancas) {
-    
-                                                                    if (numeroAgencia == iterable_element2.getNumeroAgencia() && numeroConta == iterable_element2.getNumeroConta()) {
-                                                                        iterable_element.sacar(transferencia * taxa);
-                                                                        iterable_element.transferir(transferencia, iterable_element2);
-                                                                        iterable_element.setRendimento(iterable_element.getSaldo() * 0.10);
-                                                                        iterable_element2.setRendimento(iterable_element2.getSaldo() * 0.10);
-                                                                    }
-
-                                                                }
-        
-                                                            }
-        
-                                                            else {
-                                                                System.out.println("\nNenhuma Conta Poupança a mais Cadastrada no Sistema!\n");
-                                                            }
-                                                            
-                                                        }
-        
                                                         else {
-                                                            break;
+                                                            System.out.println("\nNenhuma Conta Poupança Cadastrada no Sistema!\n");
                                                         }
-        
+                                                        
+                                                    }
+
+                                                    else if (opN5 == 2) {
+    
+                                                        if (contaPoupancas.size() > 1) {
+                                                            
+                                                            System.out.println("\nPara qual Conta deseja Transferir?\n");
+                                                            
+                                                            for (ContaPoupanca iterable_element2 : contaPoupancas) {
+    
+                                                                if (iterable_element.getNumeroConta() != iterable_element2.getNumeroConta()) {
+    
+                                                                    System.out.println("\n\tDestinatário(a): " + iterable_element2.getCliente().getNome());
+    
+                                                                    System.out.println();
+    
+                                                                    System.out.println("\tNúmero da Agência: " + iterable_element2.getNumeroAgencia());
+                                                                    System.out.println("\tNúmero da Conta: " + iterable_element2.getNumeroConta());
+    
+                                                                }
+                                                                                   
+                                                            }
+    
+                                                            System.out.println("\n");
+    
+                                                            System.out.print("Digite o Número da Agência: ");
+                                                            numeroAgencia = scanner.nextInt();
+    
+                                                            System.out.print("Digite o Número da Conta: ");
+                                                            numeroConta = scanner.nextInt();
+    
+                                                            while (numeroAgenciaList.contains(numeroAgencia) == false || numeroContaList.contains(numeroConta) == false) {
+                                                                
+                                                                System.out.println("\nConta não Encontrada!\n");
+    
+                                                                System.out.println();
+    
+                                                                System.out.print("Digite o Número da Agência: ");
+                                                                numeroAgencia = scanner.nextInt();
+    
+                                                                System.out.print("Digite o Número da Conta: ");
+                                                                numeroConta = scanner.nextInt();
+    
+                                                            }
+    
+                                                            System.out.println();
+    
+                                                            System.out.print("Digite o valor da transferência: ");
+                                                            transferencia = scanner.nextDouble();
+    
+                                                            while ((transferencia + (transferencia * taxa)) > iterable_element.getSaldo() ) {
+                                                                    
+                                                                System.out.println("\nValor da Transferência superior a Saldo da Conta, pois há uma taxa de 5%!\n");
+
+                                                                System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
+
+                                                                System.out.println();
+
+                                                                System.out.print("Digite o valor da transferência: ");
+                                                                transferencia = scanner.nextDouble();
+
+                                                            }
+
+                                                            System.out.println();
+
+                                                            for (ContaPoupanca iterable_element2 : contaPoupancas) {
+
+                                                                if (numeroAgencia == iterable_element2.getNumeroAgencia() && numeroConta == iterable_element2.getNumeroConta()) {
+                                                                    iterable_element.sacar(transferencia * taxa);
+                                                                    iterable_element.transferir(transferencia, iterable_element2);
+                                                                    iterable_element.setRendimento(iterable_element.getSaldo() * 0.10);
+                                                                    iterable_element2.setRendimento(iterable_element2.getSaldo() * 0.10);
+                                                                }
+
+                                                            }
+    
+                                                        }
+    
+                                                        else {
+                                                            System.out.println("\nNenhuma Conta Poupança a mais Cadastrada no Sistema!\n");
+                                                        }
+                                                        
+                                                    }
+           
+                                                    else {
+                                                        break;
                                                     }
 
                                                 }
