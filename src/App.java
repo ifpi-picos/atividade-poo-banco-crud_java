@@ -1369,7 +1369,7 @@ public class App {
                                                     System.out.println("\nDEPÓSITO\n");
                                                     System.out.print("Digite o valor do depósito: ");
                                                     deposito = scanner.nextDouble();
-                                                    iterable_element.depositar(deposito);
+                                                    System.out.println("Depósito realizado: " + iterable_element.depositar(deposito));
                                                     iterable_element.setRendimento(iterable_element.getSaldo() * 0.10);
 
                                                 }
@@ -1394,7 +1394,7 @@ public class App {
     
                                                     iterable_element.setRendimento(iterable_element.getSaldo() * 0.10);
     
-                                                    System.out.println("Saque: " + iterable_element.getSaldo());
+                                                    System.out.println("Saque: " + saque);
     
                                                 }
 
@@ -1510,7 +1510,7 @@ public class App {
                                                         }
     
                                                         else {
-                                                            System.out.println("\nNenhuma Conta Poupança Cadastrada no Sistema!\n");
+                                                            System.out.println("\nNenhuma Conta Corrente Cadastrada no Sistema!\n");
                                                         }
                                                         
                                                     }
