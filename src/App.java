@@ -29,7 +29,7 @@ public class App {
 
         //Declarações de variáveis:
 
-        int opN1, opN2, opN3, opN4, opN5, opN6, cont = 1;
+        int opN1, opN2, opN3, opN4, opN5, opN6;
 
         double deposito, saque, transferencia, taxa = 0.05;
                 
@@ -763,7 +763,6 @@ public class App {
 
                                                                 System.out.println("Saque: " + iterable_element.sacar(saque));
                                                                 
-
                                                                 break;
 
                                                             }
@@ -866,62 +865,28 @@ public class App {
                                                                 System.out.print("Digite o valor da transferência: ");
                                                                 transferencia = scanner.nextDouble();
 
-                                                                if (cont < 3) {
+                                                                while ((transferencia + (transferencia * taxa))  > iterable_element.getSaldo() ) {
                                                                     
-                                                                    while (transferencia > iterable_element.getSaldo() ) {
-                                                                        
-                                                                        System.out.println("\nValor da Transferência superior a Saldo da Conta!\n");
-        
-                                                                        System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
-        
-                                                                        System.out.println();
-        
-                                                                        System.out.print("Digite o valor da transferência: ");
-                                                                        transferencia = scanner.nextDouble();
-        
-                                                                    }
-        
+                                                                    System.out.println("\nValor da Transferência superior a Saldo da Conta!, pois há uma taxa de 5%!\n");
+    
+                                                                    System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
+    
                                                                     System.out.println();
-        
-                                                                    for (ContaCorrente iterable_element2 : contaCorrentes) {
-        
-                                                                        if (numeroAgencia == iterable_element2.getNumeroAgencia() && numeroConta == iterable_element2.getNumeroConta()) {
-                                                                            iterable_element.transferir(transferencia, iterable_element2);
-                                                                        }
-                                                                        
-                                                                    }
-
-                                                                }
-
-                                                                else {
-
-                                                                    while ((transferencia + (transferencia * taxa))  > iterable_element.getSaldo() ) {
-                                                                        
-                                                                        System.out.println("\nValor da Transferência superior a Saldo da Conta!, pois há uma taxa de 5%!\n");
-        
-                                                                        System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
-        
-                                                                        System.out.println();
-        
-                                                                        System.out.print("Digite o valor da transferência: ");
-                                                                        transferencia = scanner.nextDouble();
-        
-                                                                    }
-        
-                                                                    System.out.println();
-        
-                                                                    for (ContaCorrente iterable_element2 : contaCorrentes) {
-        
-                                                                        if (numeroAgencia == iterable_element2.getNumeroAgencia() && numeroConta == iterable_element2.getNumeroConta()) {
-                                                                            iterable_element.sacar(transferencia * taxa);
-                                                                            iterable_element.transferir(transferencia, iterable_element2);
-                                                                        }
-                                                                        
-                                                                    }
+    
+                                                                    System.out.print("Digite o valor da transferência: ");
+                                                                    transferencia = scanner.nextDouble();
+    
                                                                 }
     
+                                                                System.out.println();
     
-                                                                cont ++;
+                                                                for (ContaCorrente iterable_element2 : contaCorrentes) {
+    
+                                                                    if (numeroAgencia == iterable_element2.getNumeroAgencia() && numeroConta == iterable_element2.getNumeroConta()) {
+                                                                        iterable_element.transferir(transferencia, iterable_element2);
+                                                                    }
+                                                                    
+                                                                }
                                                                 
                                                             }
 
@@ -979,67 +944,28 @@ public class App {
                                                                 System.out.print("Digite o valor da transferência: ");
                                                                 transferencia = scanner.nextDouble();
 
-                                                                if (cont < 3) {
+                                                                while ((transferencia + (transferencia * taxa)) > iterable_element.getSaldo() ) {
                                                                     
-                                                                    while (transferencia > iterable_element.getSaldo() ) {
-                                                                        
-                                                                        System.out.println("\nValor da Transferência superior a Saldo da Conta!\n");
-        
-                                                                        System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
-        
-                                                                        System.out.println();
-        
-                                                                        System.out.print("Digite o valor da transferência: ");
-                                                                        transferencia = scanner.nextDouble();
-        
-                                                                    }
-        
+                                                                    System.out.println("\nValor da Transferência superior a Saldo da Conta, pois há uma taxa de 5%\n");
+    
+                                                                    System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
+    
                                                                     System.out.println();
-        
-                                                                    for (ContaPoupanca iterable_element2 : contaPoupancas) {
-        
-                                                                        if (numeroAgencia == iterable_element2.getNumeroAgencia() && numeroConta == iterable_element2.getNumeroConta()) {
-                                                                            iterable_element.transferir(transferencia, iterable_element2);
-                                                                            iterable_element2.setRendimento(iterable_element2.getSaldo() * 0.10);
-                                                                        }
-
-                                                                        else {
-                                                                            System.out.println("\nNúmero da Agência ou Número da Conta!\n");
-                                                                        }
-                                                                        
-                                                                    }
-                                                                }
-
-                                                                else {
-
-                                                                    while ((transferencia + (transferencia * taxa)) > iterable_element.getSaldo() ) {
-                                                                        
-                                                                        System.out.println("\nValor da Transferência superior a Saldo da Conta!\n");
-        
-                                                                        System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
-        
-                                                                        System.out.println();
-        
-                                                                        System.out.print("Digite o valor da transferência: ");
-                                                                        transferencia = scanner.nextDouble();
-        
-                                                                    }
-        
-                                                                    System.out.println();
-        
-                                                                    for (ContaPoupanca iterable_element2 : contaPoupancas) {
-        
-                                                                        if (numeroAgencia == iterable_element2.getNumeroAgencia() && numeroConta == iterable_element2.getNumeroConta()) {
-                                                                            iterable_element.sacar(transferencia * taxa);
-                                                                            iterable_element.transferir(transferencia, iterable_element2);
-                                                                            iterable_element2.setRendimento(iterable_element2.getSaldo() * 0.10);
-                                                                        }
-                                                                        
-                                                                    }
-
+    
+                                                                    System.out.print("Digite o valor da transferência: ");
+                                                                    transferencia = scanner.nextDouble();
+    
                                                                 }
     
-                                                                cont ++;
+                                                                System.out.println();
+    
+                                                                for (ContaPoupanca iterable_element2 : contaPoupancas) {
+    
+                                                                    if (numeroAgencia == iterable_element2.getNumeroAgencia() && numeroConta == iterable_element2.getNumeroConta()) {
+                                                                        iterable_element.transferir(transferencia, iterable_element2);
+                                                                    }
+                                                                    
+                                                                }
 
                                                             }
 
@@ -1068,7 +994,6 @@ public class App {
                                         }
         
                                         else {
-                                            cont = 1;
                                             break;
                                         }
     
@@ -1367,32 +1292,43 @@ public class App {
                                                 if (opN4 == 1) {                                             
                                                                                         
                                                     System.out.println("\nDEPÓSITO\n");
+
+                                                    System.out.println();
+
                                                     System.out.print("Digite o valor do depósito: ");
                                                     deposito = scanner.nextDouble();
+
+                                                    System.out.println();
+
                                                     System.out.println("Depósito realizado: " + iterable_element.depositar(deposito));
-                                                    iterable_element.setRendimento(iterable_element.getSaldo() * 0.10);
 
                                                 }
                                                     
                                                 else if (opN4 == 2) {
                                                         
                                                     System.out.println("\nSAQUE\n");
+
+                                                    System.out.println();
     
                                                     System.out.print("Digite o valor do saque: ");
                                                     saque = scanner.nextDouble();
 
                                                     while (saque > iterable_element.getSaldo()) {
+
                                                         System.out.println("\nSaque superior que Saldo da Conta!\n");
+
                                                         System.out.println("Saldo da Conta: " + iterable_element.getSaldo());
+
+                                                        System.out.println();
+
                                                         System.out.print("Digite o valor do saque: ");
                                                         saque = scanner.nextDouble();
+
                                                     }
                                                         
                                                     System.out.println();
 
                                                     iterable_element.sacar(saque);
-    
-                                                    iterable_element.setRendimento(iterable_element.getSaldo() * 0.10);
     
                                                     System.out.println("Saque: " + saque);
     
@@ -1496,9 +1432,7 @@ public class App {
                                                             for (ContaCorrente iterable_element2 : contaCorrentes) {
 
                                                                 if (numeroAgencia == iterable_element2.getNumeroAgencia() && numeroConta == iterable_element2.getNumeroConta()) {
-                                                                    iterable_element.sacar(transferencia * taxa);
                                                                     iterable_element.transferir(transferencia, iterable_element2);
-                                                                    iterable_element.setRendimento(iterable_element.getSaldo() * 0.10);
                                                                 }
 
                                                                 else {
@@ -1581,10 +1515,7 @@ public class App {
                                                             for (ContaPoupanca iterable_element2 : contaPoupancas) {
 
                                                                 if (numeroAgencia == iterable_element2.getNumeroAgencia() && numeroConta == iterable_element2.getNumeroConta()) {
-                                                                    iterable_element.sacar(transferencia * taxa);
                                                                     iterable_element.transferir(transferencia, iterable_element2);
-                                                                    iterable_element.setRendimento(iterable_element.getSaldo() * 0.10);
-                                                                    iterable_element2.setRendimento(iterable_element2.getSaldo() * 0.10);
                                                                 }
 
                                                             }

@@ -11,6 +11,24 @@ public class ContaCorrente extends Conta {
         
     }
 
+    @Override
+    public boolean depositar(double deposito) {
+        return super.depositar(deposito);
+    }
+
+    @Override
+    public double sacar(double saque) {
+        return super.sacar(saque);
+    }
+
+    @Override
+    public void transferir(double transferencia, Conta destinatario) {
+        this.sacar(transferencia * 1.05);
+        destinatario.depositar(transferencia);
+        this.enviaNotificacao("Tranferência: ", transferencia * 1.05);
+        destinatario.enviaNotificacao("Tranferência: ", transferencia);
+    }
+
     public double getChequeEspecial() {
         return this.chequeEspecial;
     }

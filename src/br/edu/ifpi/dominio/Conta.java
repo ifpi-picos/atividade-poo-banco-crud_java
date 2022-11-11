@@ -50,11 +50,7 @@ public abstract class Conta {
         return saque;
     }
     
-    public void transferir(double transferencia, Conta destinatario) {
-        this.sacar(transferencia);
-        destinatario.depositar(transferencia);
-        this.enviaNotificacao("Tranferência: ", transferencia);
-    }
+    public abstract void transferir(double transferencia, Conta destinatario);
 
     public void enviaNotificacao(String operacao, double valor) {
         this.notificacao.enviaNotificacao(operacao, valor);
